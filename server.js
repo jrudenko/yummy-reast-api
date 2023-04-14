@@ -1,18 +1,19 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const app = require('./app');
-// const { catchAsyncWrapper } = require('./utils');
+const { catchAsyncWrapper } = require('./utils');
 
-const { PORT } = process.env;
+const { PORT, MONGO_URL } = process.env;
+// const { MONGO_URL } = process.env.MONGO_URL;
 
-/* const connectMongo = catchAsyncWrapper(async () => {
+const connectMongo = catchAsyncWrapper(async () => {
   mongoose.set('strictQuery', false);
   // eslint-disable-next-line no-console
   await mongoose.connect(MONGO_URL).catch((error) => console.log(error)); // todo: refactor
   // eslint-disable-next-line no-console
   return console.log('connected to DB');
 });
-connectMongo(); */
+connectMongo();
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
