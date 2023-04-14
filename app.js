@@ -25,7 +25,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // * SWAGGER SECTION END */
 
 app.get('/api', (req, res) => {
-  res.send('Hello World! This is the first response from YUMMY backend of 4th project team :-)');
+  res.send('Hello World! This is the first response from YUMMY backend of 4th project Team :-)');
 });
 
 app.all('*', (req, res) => {
