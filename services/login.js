@@ -6,8 +6,9 @@ const { User } = require('../db/usersModel');
 
 const { JWT_SECRET } = process.env;
 
-const login = async (req, res) => {
-  const { email, password } = req.body;
+// const login = async (req, res) => {
+const login = async (email, password) => {
+  // const { email, password } = req.body;
   const user = await User.findOne({ email }).select('+password');
   if (!user) {
     throw new Unauthorized(
@@ -22,9 +23,9 @@ const login = async (req, res) => {
     id: user._id,
   };
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '2h' });
-  await User.findByIdAndUpdate(user._id, { token });
+  const loginnedUser = await User.findByIdAndUpdate(user._id, { token });
 
-  return login;
+  return loginnedUser;
 };
 
 module.exports = { login };

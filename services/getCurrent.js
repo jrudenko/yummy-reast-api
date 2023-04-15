@@ -11,7 +11,7 @@ const getCurrent = (req, res, next) => {
       },
     });
   } catch (error) {
-    next(error);
+    next();
   }
 };
 
