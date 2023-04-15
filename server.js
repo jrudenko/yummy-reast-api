@@ -1,10 +1,9 @@
-require('dotenv').config();
+// require('dotenv').config();
 const mongoose = require('mongoose');
 const app = require('./app');
 const { catchAsyncWrapper } = require('./utils');
 
 const { PORT, MONGO_URL } = process.env;
-// const { MONGO_URL } = process.env.MONGO_URL;
 
 const connectMongo = catchAsyncWrapper(async () => {
   mongoose.set('strictQuery', false);

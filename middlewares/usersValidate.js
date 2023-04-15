@@ -1,7 +1,5 @@
 const Joi = require('joi');
-const { CustomError } = require('../utils');
 const { name, email, password } = require('./joiTemplates');
-const { User } = require('../db/usersModel');
 
 const userSchema = Joi.object().keys({
   name: name.required(),
@@ -15,7 +13,8 @@ const createUserValidate = (req, res, next) => {
     // return new CustomError(400, error.message );
     return res.status(400).json({ error: error.message });
   }
-  /*   const { email: emailToCheck } = value; // TODO: чи треба?
+  // TODO: чи треба? (зайвий запит до БД)
+  /*   const { email: emailToCheck } = value; 
   const userExists = await User.exists({ email: emailToCheck }); // повертає айді, якщо такий юзер вже є
   // console.log('CL: ~ file: usersValidationMwr.js:28 ~ userExists:', userExists);
 

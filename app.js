@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 
 const logger = require('morgan');
@@ -10,14 +11,14 @@ const swaggerDocument = require('./utils/swaggerApi.json');
 
 const { usersRouter } = require('./routes');
 
-const { NODE_ENV } = process.env;
+const { DEV_ENV } = process.env;
 
 const app = express();
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
 app.use(logger(formatsLogger));
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 // * SWAGGER SECTION START
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -44,16 +45,12 @@ app.all('*', (req, res) => {
 app.use((err, req, res, next) => {
   const { status } = err; // there we get error status, that was setting on user useMiddlewares
 
-  if (NODE_ENV === 'development') {
+  if (DEV_ENV === 'development') {
     res.status(status || 500).json({
       message: err.message,
       stack: err.stack,
     });
   } else {
-    // const { status: customStatus, message } = customErrorMessage(err.message);
-    // res.status(customStatus || 500).json({
-    //   message,
-    // });
     res.status(status || 500).json({
       message: err.message,
     });

@@ -5,7 +5,7 @@ const email = Joi.string().email({
   minDomainSegments: 2,
   tlds: { allow: ['com', 'net', 'ua', 'org', 'net'] },
 });
-const password = Joi.string().pattern(/^[a-zA-Z0-9.;,/.;'`)(*&^%$#@!~]{3,30}$/);
+const password = Joi.string().pattern(/^[a-zA-Z0-9.;,/.;'`)(*&^%$#@!~]{7,32}$/);
 const verificationToken = Joi.string().guid({ version: 'uuidv4' });
 
 module.exports = {

@@ -1,14 +1,13 @@
 const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const { v4: uuidv4 } = require('uuid');
 const { User } = require('../db/usersModel');
-
+// const jwt = require('jsonwebtoken');
+// const { v4: uuidv4 } = require('uuid');
 // const { JWT_SECRET } = process.env;
 
+// TODO: error catch wrapper?
 const registerUserService = async ({ name, email, password }) => {
   const encryptedPassword = await bcrypt.hash(password, 10);
-  // const verificationToken = uuidv4();
 
   const createdUser = User.create({
     name,
