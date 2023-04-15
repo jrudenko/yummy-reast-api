@@ -1,0 +1,111 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "test API",
+    "version": "v1"
+  },
+  "tags": [
+    {
+      "name": "Users API:",
+      "description": "THE SAMPLE - ENDPOINTS NOT WORKING NOW"
+    }
+  ],
+  "paths": {
+    "/api/auth/register": {
+      "post": {
+        "summary": "Register a new user",
+        "tags": [
+          "User API"
+        ],
+        "description": "description",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "name": "newUser",
+                "email": "example@example.com",
+                "password": "hsy36djhwe93"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "hs672ijnfy23hf3pi3uwkdj"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "newUser"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "example@example.com"
+                        }
+                      }
+                    }                    
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": [
+              "true",
+              "user id is required"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "required": [
+              "true",
+              "Set name of user"
+            ]
+          },
+          "email": {
+            "type": "string",
+            "required": [
+              "true",
+              "Set email of user"
+            ]
+          },
+          "token": {
+             "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "description": "JWT Authorization header using the Bearer scheme.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
