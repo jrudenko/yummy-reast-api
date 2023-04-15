@@ -1,13 +1,12 @@
 const getCurrent = (req, res, next) => {
   try {
-    const { email, subscription } = req.user;
+    const { email } = req.user;
     res.json({
       status: 'success',
       code: 200,
       data: {
         user: {
           email,
-          subscription,
         },
       },
     });

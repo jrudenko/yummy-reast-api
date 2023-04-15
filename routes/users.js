@@ -11,6 +11,6 @@ router.post('/register', createUserValidate, createUserController);
 
 router.post('/login', login);
 
-router.get('/current', auth, createUserValidate, getCurrent);
+router.get('/current', auth, getCurrent);
 
 module.exports = router;
