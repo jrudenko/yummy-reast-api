@@ -1,17 +1,17 @@
+require('dotenv').config();
 const express = require('express');
 
 const logger = require('morgan');
 const cors = require('cors');
 
-const { NODE_ENV } = process.env;
-
-/* 
 // * SWAGGER SECTION START
 const swaggerUi = require('swagger-ui-express');
-
 const swaggerDocument = require('./utils/swaggerApi.json');
-// * SWAGGER SECTION END 
-*/
+// * SWAGGER SECTION END
+
+const { usersRouter } = require('./routes');
+
+const { DEV_ENV } = process.env;
 
 const app = express();
 
@@ -20,12 +20,16 @@ const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
-/* // * SWAGGER SECTION START
+// * SWAGGER SECTION START
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-// * SWAGGER SECTION END */
+// * SWAGGER SECTION END
+
+app.use('/api/auth', usersRouter);
 
 app.get('/api', (req, res) => {
-  res.send('Hello World! This is the first response from YUMMY backend of 4th project Team :-)');
+  res.send(
+    'Hello World! This is the first response from YUMMY backend of 4th project Team :-)'
+  );
 });
 
 app.all('*', (req, res) => {
@@ -41,16 +45,12 @@ app.all('*', (req, res) => {
 app.use((err, req, res, next) => {
   const { status } = err; // there we get error status, that was setting on user useMiddlewares
 
-  if (NODE_ENV === 'development') {
+  if (DEV_ENV === 'development') {
     res.status(status || 500).json({
       message: err.message,
       stack: err.stack,
     });
   } else {
-    // const { status: customStatus, message } = customErrorMessage(err.message);
-    // res.status(customStatus || 500).json({
-    //   message,
-    // });
     res.status(status || 500).json({
       message: err.message,
     });
