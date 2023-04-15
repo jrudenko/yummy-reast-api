@@ -6,7 +6,7 @@ const { User } = require('../db/usersModel');
 
 const { JWT_SECRET } = process.env;
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
   try {
     const { email, password, subscription } = req.body;
     const user = await User.findOne({ email });
@@ -38,6 +38,7 @@ const login = async (req, res) => {
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err.message);
+    next();
   }
 };
 
