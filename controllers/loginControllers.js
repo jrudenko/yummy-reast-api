@@ -7,7 +7,7 @@ const { catchAsyncWrapper } = require('../utils');
 const loginControl = catchAsyncWrapper((req, res) => {
   const { email, token } = req.body;
   res.json({
-    status: 'sucess',
+    status: 'success',
     code: 200,
     data: {
       token,
