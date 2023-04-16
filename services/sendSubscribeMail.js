@@ -1,11 +1,13 @@
 const sgMail = require('@sendgrid/mail');
 const { catchAsyncWrapper } = require('../utils');
 
+const { SENDGRID_FROM, SENDGRID_API_KEY } = process.env;
+
 const sendMail = async (email) => {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  sgMail.setApiKey(SENDGRID_API_KEY);
   const msg = {
     to: email,
-    from: 'yurgov@gmail.com',
+    from: SENDGRID_FROM,
     subject: 'So Yummy news subscription confirm',
     text: 'please open in browser, that support html messages view',
     html: '<h3> This mail confirm, that you subscribed to So Yummy news feed. Thank you </h3>',
