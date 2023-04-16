@@ -1,10 +1,12 @@
 const express = require('express');
-const { createUserController } = require('../controllers');
+const {
+  createUserController,
+  loginController,
+  updateByIdControllers,
+} = require('../controllers');
 const { createUserValidate, loginUserValidate } = require('../middlewares');
 const { auth } = require('../middlewares');
-const { loginController, updateByIdControllers } = require('../controllers');
 const { getCurrent } = require('../services');
-// const { updateById } = require('../services');
 
 const router = express.Router();
 
