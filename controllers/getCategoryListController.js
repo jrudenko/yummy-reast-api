@@ -1,11 +1,11 @@
-const { catchAsyncWrapper } = require("../utils");
+const categoryList = require('../db/categoryList');
 
-const getCategoryListController = catchAsyncWrapper (async (req, res) => {
- await console.log(' getCategoryListController.js [4]:',);
-  res.json({
-    message: 'test response',
+const getCategoryListController = (req, res) => {
+
+  res.status(200).json({
+    categoryList: categoryList.sort(),
   });
-});
+};
 
 module.exports = {
   getCategoryListController,
