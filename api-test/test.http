@@ -1,0 +1,43 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTY2ODU5NCwiZXhwIjoxNjgxNjc1Nzk0fQ.7x_AuZ6qUZ4PVLWCH_n9_-ItztE8HT-RhdVXKKMhPe0
+
+### * LOGIN
+POST http://localhost:3003/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "Jimmy2updated@email.com",
+    "password": "1234567"
+}
+
+### * UPDATE
+PUT http://localhost:3003/api/auth/643bb3fcd815fa772b567c4e
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "email": "Jimmy2updated@email.com"
+}
+
+### * REGISTER
+POST http://localhost:3003/api/auth/register
+Content-Type: application/json
+
+{
+   "name": "JimmyTest4",
+    "email": "Jimmy4@email.com",
+    "password": "1234567"
+}
+### * SUBSCRIBE
+POST http://localhost:3003/api/subscribe
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+   "emailToSubscribe": "yuyuyu5@mail.com"
+}
+
+### * RECIPES
+GET http://localhost:3003/api/recipes/category-list
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
