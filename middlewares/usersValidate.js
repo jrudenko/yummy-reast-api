@@ -7,6 +7,11 @@ const userSchema = Joi.object().keys({
   password: password.required(),
 });
 
+const userLoginSchema = Joi.object().keys({
+  email: email.required(),
+  password: password.required(),
+});
+
 const createUserValidate = (req, res, next) => {
   const { error, value } = userSchema.validate(req.body);
   if (error) {
@@ -23,6 +28,17 @@ const createUserValidate = (req, res, next) => {
   next();
 };
 
+const loginUserValidate = (req, res, next) => {
+  const { error, value } = userLoginSchema.validate(req.body);
+  if (error) {
+    // return new CustomError(400, error.message );
+    return res.status(400).json({ error: error.message });
+  }
+
+  next();
+};
+
 module.exports = {
   createUserValidate,
+  loginUserValidate,
 };
