@@ -1,9 +1,7 @@
 const sgMail = require('@sendgrid/mail');
 const { catchAsyncWrapper } = require('../utils');
 
-const sendMail = catchAsyncWrapper(async (email) => {
-  console.log('CL: ~ file: sendSubscribeMail.js:5 ~ email:', email);
-  console.log('~process.env.SENDGRID_API_KEY sendSubscribeMail.js [6]:', process.env.SENDGRID_API_KEY);
+const sendMail = async (email) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
     to: email,
@@ -12,15 +10,19 @@ const sendMail = catchAsyncWrapper(async (email) => {
     text: 'please open in browser, that support html messages view',
     html: '<h3> This mail confirm, that you subscribed to So Yummy news feed. Thank you </h3>',
   };
-  await sgMail.send(msg);
-});
+  try {
+    await sgMail.send(msg);
+  } catch (error) {
+    console.error(error);
+
+    if (error.response) {
+      console.error(error.response.body);
+    }
+  }
+};
 
 const sendSubscribeMail = catchAsyncWrapper(async (email) => {
-  const sendMailResult = await sendMail(email);
-  console.log(
-    'CL: ~ file: sendSubscribeMail.js:26 ~ sendMailResult:',
-    sendMailResult
-  );
+  await sendMail(email);
 
   return {
     statusCode: 200,

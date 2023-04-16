@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTY1MTU3MCwiZXhwIjoxNjgxNjU4NzcwfQ.kZS53DGCWSQ_KvWkQep46PogDWLlsUeBZfJ3zPKitCI
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTY1OTg0MCwiZXhwIjoxNjgxNjY3MDQwfQ.jnormGjPASJITsoUtNoduxuiEBuV8V-68n16ouOr63o
 
 ### * LOGIN
 POST http://localhost:3003/api/auth/login
@@ -23,8 +23,8 @@ POST http://localhost:3003/api/auth/register
 Content-Type: application/json
 
 {
-   "name": "JimmyTest2",
-    "email": "Jimmy2@email.com",
+   "name": "JimmyTest4",
+    "email": "Jimmy4@email.com",
     "password": "1234567"
 }
 ### * SUBSCRIBE
@@ -33,6 +33,6 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-   "emailToSubscribe": "yurgo@ptotonmail.com"
+   "emailToSubscribe": "yuyuyu5@mail.com"
 }
 
