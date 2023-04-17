@@ -4,4 +4,7 @@ node_modules/
 .idea.*
 .vscode
 test_http
+api-test
+api-test/*
+
 

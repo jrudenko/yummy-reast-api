@@ -123,6 +123,241 @@
           }
         }
       }
+    },
+    "/api/auth/current": {
+      "get": {
+        "summary": "Update existed user",
+        "tags": [
+          "User API"
+        ],
+        "description": "Update name OR email fields os user record",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 201
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "fields update"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "UserName"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "example@example.com"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/{id}": {
+      "put": {
+        "summary": "Update existed user",
+        "tags": [
+          "User API"
+        ],
+        "description": "Update name OR email fields os user record",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "user id",
+            "schema": {
+              "type": "string",
+              "example": "6435681c54d50f705952fa96"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "name": "newName",
+                "email": "Jimmy2updated@email.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 201
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "fields update"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "UserName"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "example@example.com"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/logout": {
+      "get": {
+        "summary": "Update existed user",
+        "tags": [
+          "User API"
+        ],
+        "description": "Logout loginned in user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/subscribe": {
+      "post": {
+        "summary": "Subscribe to news feed",
+        "tags": [
+          "Subscribe"
+        ],
+        "description": "description",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Subscribe"
+              },
+              "example": {
+                "emailToSubscribe": "example@email.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "subscribed": {
+                      "type": "string",
+                      "example": "email@email.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recipes/category-list": {
+      "get": {
+        "summary": "Get a list of recipes categories",
+        "tags": [
+          "Receipes"
+        ],
+        "description": "received an array of strings",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Array of Strings - reccipes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "categoryList": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "categ1",
+                        "categ2",
+                        "categ3"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -153,6 +388,17 @@
           },
           "token": {
             "type": "string"
+          }
+        }
+      },
+      "Subscribe": {
+        "type": "object",
+        "properties": {
+          "emailToSubscribe": {
+            "type": "string",
+            "required": [
+              "true"
+            ]
           }
         }
       }
