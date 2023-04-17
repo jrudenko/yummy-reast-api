@@ -1,4 +1,4 @@
-const { subscribeUserController } = require('./subscribeUserControllers');
+const subscribeUserController = require('./subscribeUserControllers');
 
 module.exports = {
   subscribeUserController,

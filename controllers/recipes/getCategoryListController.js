@@ -6,6 +6,4 @@ const getCategoryListController = (req, res) => {
   });
 };
 
-module.exports = {
-  getCategoryListController,
-};
+module.exports = getCategoryListController;

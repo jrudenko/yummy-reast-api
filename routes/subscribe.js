@@ -1,9 +1,9 @@
 const express = require('express');
-const { subscribeUserController } = require('../controllers/subscribe');
+const { subscribe: ctrl } = require('../controllers');
 const { auth, subscribeUserValidate } = require('../middlewares');
 
 const router = express.Router();
 
-router.post('/', auth, subscribeUserValidate, subscribeUserController);
+router.post('/', auth, subscribeUserValidate, ctrl.subscribeUserController);
 
 module.exports = router;

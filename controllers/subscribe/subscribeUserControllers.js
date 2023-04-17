@@ -21,6 +21,4 @@ const subscribeUserController = catchAsyncWrapper(async (req, res) => {
     subscribe: subscribedEmail,
   });
 });
-module.exports = {
-  subscribeUserController,
-};
+module.exports = subscribeUserController;
