@@ -6,28 +6,7 @@ const { Recipes } = require('../../db/recipesModel');
 const { catchAsyncWrapper } = require('../../utils');
 
 const getMainPageController = catchAsyncWrapper(async (req, res) => {
-  const pipeline = [
-    {
-      $group: {
-        _id: '$category',
-        items: { $push: '$$ROOT' },
-      },
-    },
-    {
-      $project: {
-        _id: 0,
-        category: '$_id',
-        items: { $slice: ['$items', 4] },
-      },
-    },
-    {
-      $unwind: '$items',
-    },
-    {
-      $replaceRoot: { newRoot: '$items' },
-    },
-  ];
-  const result = await Recipes.aggregate(pipeline);
+  const result = await Recipes.find({}).limit(4);
   res.json({
     status: 'success',
     code: 200,
