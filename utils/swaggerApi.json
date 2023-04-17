@@ -7,7 +7,7 @@
   "tags": [
     {
       "name": "Users API:",
-      "description": "THE SAMPLE - ENDPOINTS NOT WORKING NOW"
+      "description": "main path - https://yummy-rest-api.yurgo.fun/"
     }
   ],
   "paths": {
@@ -57,7 +57,65 @@
                           "example": "example@example.com"
                         }
                       }
-                    }                    
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "summary": "Login existed user",
+        "tags": [
+          "User API"
+        ],
+        "description": "description",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "email": "Jimmy2updated@email.com",
+                "password": "1234567"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "example": "example@example.com"
+                        },
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGeiO6JIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTY2ODYzNywiZXhwIjoxNjgxRjc1ODM3fQ.U2MKPZbgFvq_ASqX79dZBxOA7AbUncCQeH9M8ffohps"
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -94,7 +152,7 @@
             ]
           },
           "token": {
-             "type": "string"
+            "type": "string"
           }
         }
       }
