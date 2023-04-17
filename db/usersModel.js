@@ -22,6 +22,10 @@ const userSchema = new Schema({
     type: String,
     default: '',
   },
+  subscribe: {
+    type: String,
+    default: '',
+  },
 });
 
 const User = mongoose.model('User', userSchema);
