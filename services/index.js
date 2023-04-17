@@ -4,6 +4,7 @@ const { getCurrent } = require('./getCurrent');
 const { updateById } = require('./updateById');
 const { subscribeUser } = require('./subscribeSrv');
 const { sendSubscribeMail } = require('./sendSubscribeMail');
+const { logout } = require('./logout');
 
 module.exports = {
   registerUserService,
@@ -13,4 +14,5 @@ module.exports = {
   updateById,
   subscribeUser,
   sendSubscribeMail,
+  logout,
 };
