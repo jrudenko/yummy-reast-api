@@ -124,59 +124,6 @@
         }
       }
     },
-    "/api/auth/current": {
-      "get": {
-        "summary": "Update existed user",
-        "tags": [
-          "User API"
-        ],
-        "description": "Update name OR email fields os user record",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "example": "success"
-                    },
-                    "code": {
-                      "type": "number",
-                      "example": 201
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "fields update"
-                    },
-                    "user": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string",
-                          "example": "UserName"
-                        },
-                        "email": {
-                          "type": "string",
-                          "example": "example@example.com"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/auth/{id}": {
       "put": {
         "summary": "Update existed user",

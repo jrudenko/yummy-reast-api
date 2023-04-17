@@ -1,11 +1,11 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTcyMzM5NSwiZXhwIjoxNjgxNzMwNTk1fQ.a7cZjh_XTpTUjaU8CSR4Z6Li40Y3gyDfS9LH1ONRA6E
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTczMTI2MSwiZXhwIjoxNjgxNzM4NDYxfQ.-Fqv5fzr9bthYZPbDRjWS0eyJs5Y46hHHIjK0kO6Vuc
 
 ### * LOGIN
 POST http://localhost:3003/api/auth/login
 Content-Type: application/json
 
 {
-    "email": "Jimmy2updated2@email.com",
+    "email": "Jimmy2updated@email.com",
     "password": "1234567"
 }
 
@@ -16,6 +16,15 @@ Authorization: Bearer {{token}}
 
 {
     "email": "Jimmy2updated3@email.com"
+}
+
+### * LOGOUT
+GET http://localhost:3003/api/auth/logout
+Content-Type: application/json
+
+{
+    "email": "Jimmy2updated@email.com",
+    "password": "1234567"
 }
 
 ### * REGISTER
@@ -35,4 +44,10 @@ Authorization: Bearer {{token}}
 {
    "emailToSubscribe": "yuyuyu5@mail.com"
 }
+
+### * CURRENT
+GET http://localhost:3003/api/auth/current
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
 
