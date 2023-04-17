@@ -1,4 +1,4 @@
-const { User } = require('../db/usersModel');
+const { User } = require('../../db/usersModel');
 
 const logout = async (req, res, next) => {
   try {
@@ -10,4 +10,4 @@ const logout = async (req, res, next) => {
   }
 };
 
-module.exports = { logout };
+module.exports = logout;

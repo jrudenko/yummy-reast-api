@@ -1,7 +1,6 @@
-const categoryList = require('../db/categoryList');
+const categoryList = require('../../db/categoryList');
 
 const getCategoryListController = (req, res) => {
-
   res.status(200).json({
     categoryList: categoryList.sort(),
   });

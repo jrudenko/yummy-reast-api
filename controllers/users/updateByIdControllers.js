@@ -1,8 +1,8 @@
 require('dotenv').config();
 
-const { updateById } = require('../services');
+const { updateById } = require('../../services');
 
-const { catchAsyncWrapper } = require('../utils');
+const { catchAsyncWrapper } = require('../../utils');
 
 const updateByIdControllers = catchAsyncWrapper(async (req, res) => {
   const { userId } = req.params;
@@ -18,6 +18,4 @@ const updateByIdControllers = catchAsyncWrapper(async (req, res) => {
   });
 });
 
-module.exports = {
-  updateByIdControllers,
-};
+module.exports = updateByIdControllers;
