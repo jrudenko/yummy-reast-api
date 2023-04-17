@@ -1,11 +1,11 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTY1OTg0MCwiZXhwIjoxNjgxNjY3MDQwfQ.jnormGjPASJITsoUtNoduxuiEBuV8V-68n16ouOr63o
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTcyMzM5NSwiZXhwIjoxNjgxNzMwNTk1fQ.a7cZjh_XTpTUjaU8CSR4Z6Li40Y3gyDfS9LH1ONRA6E
 
 ### * LOGIN
 POST http://localhost:3003/api/auth/login
 Content-Type: application/json
 
 {
-    "email": "Jimmy2updated@email.com",
+    "email": "Jimmy2updated2@email.com",
     "password": "1234567"
 }
 
@@ -15,7 +15,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "email": "Jimmy2updated@email.com"
+    "email": "Jimmy2updated3@email.com"
 }
 
 ### * REGISTER

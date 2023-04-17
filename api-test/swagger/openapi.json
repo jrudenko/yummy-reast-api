@@ -1,0 +1,227 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "test API",
+    "version": "v1"
+  },
+  "tags": [
+    {
+      "name": "Users API:",
+      "description": "main path - https://yummy-rest-api.yurgo.fun/"
+    }
+  ],
+  "paths": {
+    "/api/auth/register": {
+      "post": {
+        "summary": "Register a new user",
+        "tags": [
+          "User API"
+        ],
+        "description": "description",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "name": "newUser",
+                "email": "example@example.com",
+                "password": "hsy36djhwe93"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "hs672ijnfy23hf3pi3uwkdj"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "newUser"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "example@example.com"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/{id}": {
+      "post": {
+        "summary": "Login existed user",
+        "tags": [
+          "User API"
+        ],
+        "description": "description",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "email": "Jimmy2updated@email.com",
+                "password": "1234567"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "example": "example@example.com"
+                        },
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGeiO6JIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTY2ODYzNywiZXhwIjoxNjgxRjc1ODM3fQ.U2MKPZbgFvq_ASqX79dZBxOA7AbUncCQeH9M8ffohps"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "summary": "Login existed user",
+        "tags": [
+          "User API"
+        ],
+        "description": "description",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "email": "Jimmy2updated@email.com",
+                "password": "1234567"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "code": {
+                      "type": "number",
+                      "example": 200
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "example": "example@example.com"
+                        },
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGeiO6JIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTY2ODYzNywiZXhwIjoxNjgxRjc1ODM3fQ.U2MKPZbgFvq_ASqX79dZBxOA7AbUncCQeH9M8ffohps"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": [
+              "true",
+              "user id is required"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "required": [
+              "true",
+              "Set name of user"
+            ]
+          },
+          "email": {
+            "type": "string",
+            "required": [
+              "true",
+              "Set email of user"
+            ]
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "description": "JWT Authorization header using the Bearer scheme.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
