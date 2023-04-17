@@ -22,7 +22,7 @@ const login = async (email, password) => {
   const payload = {
     id: user._id,
   };
-  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '2h' });
+  const token = jwt.sign(payload, JWT_SECRET);
   const loginnedUser = await User.findByIdAndUpdate(user._id, { token });
 
   return loginnedUser;

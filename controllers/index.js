@@ -1,13 +1,9 @@
-const { createUserController } = require('./userControllers');
-const { loginController } = require('./loginControllers');
-const { updateByIdControllers } = require('./updateByIdControllers');
-const { getCategoryListController } = require('./getCategoryListController');
-const { subscribeUserController } = require('./subscribeUserControllers');
+const users = require('./users');
+const recipes = require('./recipes');
+const subscribe = require('./subscribe');
 
 module.exports = {
-  createUserController,
-  loginController,
-  updateByIdControllers,
-  getCategoryListController,
-  subscribeUserController,
+  users,
+  recipes,
+  subscribe,
 };

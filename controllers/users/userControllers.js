@@ -2,11 +2,9 @@
 require('dotenv').config();
 // const { CustomError } = require('../utils');
 
-const {
-  registerUserService,
-} = require('../services');
+const { registerUserService } = require('../../services');
 
-const { catchAsyncWrapper } = require('../utils');
+const { catchAsyncWrapper } = require('../../utils');
 
 const createUserController = catchAsyncWrapper(async (req, res) => {
   const userData = req.body;
@@ -21,6 +19,4 @@ const createUserController = catchAsyncWrapper(async (req, res) => {
   });
 });
 
-module.exports = {
-  createUserController,
-};
+module.exports = createUserController;

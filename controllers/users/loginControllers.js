@@ -1,8 +1,8 @@
 require('dotenv').config();
 
-const { login } = require('../services');
+const { login } = require('../../services');
 
-const { catchAsyncWrapper } = require('../utils');
+const { catchAsyncWrapper } = require('../../utils');
 
 const loginController = catchAsyncWrapper(async (req, res) => {
   const { email, password } = req.body;
@@ -20,6 +20,4 @@ const loginController = catchAsyncWrapper(async (req, res) => {
     },
   });
 });
-module.exports = {
-  loginController,
-};
+module.exports = loginController;

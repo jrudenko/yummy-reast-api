@@ -1,6 +1,6 @@
-const { subscribeUser, sendSubscribeMail } = require('../services');
+const { subscribeUser, sendSubscribeMail } = require('../../services');
 
-const { catchAsyncWrapper } = require('../utils');
+const { catchAsyncWrapper } = require('../../utils');
 
 const subscribeUserController = catchAsyncWrapper(async (req, res) => {
   const { emailToSubscribe } = req.body;
@@ -23,6 +23,4 @@ const subscribeUserController = catchAsyncWrapper(async (req, res) => {
     subscribed: subscribedEmail,
   });
 });
-module.exports = {
-  subscribeUserController,
-};
+module.exports = subscribeUserController;

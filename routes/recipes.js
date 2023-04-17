@@ -1,9 +1,11 @@
 const express = require('express');
-const { getCategoryListController } = require('../controllers');
+const { recipes: ctrl } = require('../controllers');
 const { auth } = require('../middlewares');
 
 const router = express.Router();
 
-router.get('/category-list', auth, getCategoryListController);
+router.get('/category-list', auth, ctrl.getCategoryListController);
+
+router.get('/main-page', auth, ctrl.getMainPageController);
 
 module.exports = router;
