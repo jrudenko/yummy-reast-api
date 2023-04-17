@@ -21,11 +21,7 @@ Authorization: Bearer {{token}}
 ### * LOGOUT
 GET http://localhost:3003/api/auth/logout
 Content-Type: application/json
-
-{
-    "email": "Jimmy2updated@email.com",
-    "password": "1234567"
-}
+Authorization: Bearer {{token}}
 
 ### * REGISTER
 POST http://localhost:3003/api/auth/register

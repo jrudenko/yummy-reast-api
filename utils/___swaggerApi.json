@@ -7,7 +7,7 @@
   "tags": [
     {
       "name": "Users API:",
-      "description": "main path - https://yummy-rest-api.yurgo.fun"
+      "description": "main path - https://yummy-rest-api.yurgo.fun/"
     }
   ],
   "paths": {
@@ -252,25 +252,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/auth/logout": {
-      "get": {
-        "summary": "Update existed user",
-        "tags": [
-          "User API"
-        ],
-        "description": "Logout loginned in user",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
           }
         }
       }
