@@ -7,7 +7,9 @@ const subscribeUserController = catchAsyncWrapper(async (req, res) => {
   const { id, subscribe } = req.user;
 
   if (emailToSubscribe === subscribe) {
-    return res.status(204).json({});
+    return res.status(200).json({
+      message: 'already done'
+    });
   }
 
   const subscribedResult = await subscribeUser(id, emailToSubscribe);
@@ -18,7 +20,7 @@ const subscribeUserController = catchAsyncWrapper(async (req, res) => {
   // TODO: add sending email check after confirm SendGrid credentials
 
   res.status(200).json({
-    subscribe: subscribedEmail,
+    subscribed: subscribedEmail,
   });
 });
 module.exports = {

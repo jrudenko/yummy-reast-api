@@ -5,4 +5,6 @@ node_modules/
 .vscode
 test_http
 api-test
+api-test/*
+
 

@@ -7,7 +7,7 @@
   "tags": [
     {
       "name": "Users API:",
-      "description": "main path - https://yummy-rest-api.yurgo.fun"
+      "description": "main path - https://yummy-rest-api.yurgo.fun/"
     }
   ],
   "paths": {
@@ -274,6 +274,90 @@
           }
         }
       }
+    },
+    "/api/subscribe": {
+      "post": {
+        "summary": "Subscribe to news feed",
+        "tags": [
+          "Subscribe"
+        ],
+        "description": "description",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Subscribe"
+              },
+              "example": {
+                "emailToSubscribe": "example@email.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "subscribed": {
+                      "type": "string",
+                      "example": "email@email.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/recipes/category-list": {
+      "get": {
+        "summary": "Get a list of recipes categories",
+        "tags": [
+          "Receipes"
+        ],
+        "description": "received an array of strings",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Array of Strings - reccipes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "categoryList": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "categ1",
+                        "categ2",
+                        "categ3"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -304,6 +388,17 @@
           },
           "token": {
             "type": "string"
+          }
+        }
+      },
+      "Subscribe": {
+        "type": "object",
+        "properties": {
+          "emailToSubscribe": {
+            "type": "string",
+            "required": [
+              "true"
+            ]
           }
         }
       }
