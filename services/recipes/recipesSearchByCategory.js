@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Recipes } = require('../db/recipesModel');
+const { Recipes } = require('../../db/recipesModel');
 
 const recipesSearchByCategory = async category => {
   const result = await Recipes.find({

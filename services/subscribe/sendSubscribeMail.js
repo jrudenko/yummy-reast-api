@@ -1,5 +1,5 @@
 const sgMail = require('@sendgrid/mail');
-const { catchAsyncWrapper } = require('../utils');
+const { catchAsyncWrapper } = require('../../utils');
 
 const { SENDGRID_FROM, SENDGRID_API_KEY } = process.env;
 

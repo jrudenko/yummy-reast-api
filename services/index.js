@@ -1,18 +1,11 @@
-const { registerUserService, verifyUserService } = require('./users');
-const { login } = require('./login');
-const { updateById } = require('./updateById');
-const { subscribeUser } = require('./subscribeSrv');
-const { sendSubscribeMail } = require('./sendSubscribeMail');
-const { recipesSearchByCategory } = require('./recipesSearchByCategory');
-const { searchRecipesByTitle } = require('./searchReceipesByTitle');
+const users = require('./users');
+const recipes = require('./recipes');
+const subscribeUser = require('./subscribe');
+const search = require('./search');
 
 module.exports = {
-  registerUserService,
-  verifyUserService,
-  login,
-  updateById,
+  users,
+  recipes,
   subscribeUser,
-  sendSubscribeMail,
-  recipesSearchByCategory,
-  searchRecipesByTitle,
+  search,
 };

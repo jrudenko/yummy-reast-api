@@ -1,13 +1,13 @@
 require('dotenv').config();
 
-const { login } = require('../../services');
+const { users } = require('../../services');
 
 const { catchAsyncWrapper } = require('../../utils');
 
 const loginController = catchAsyncWrapper(async (req, res) => {
   const { email, password } = req.body;
 
-  const loginnedUser = await login(email, password);
+  const loginnedUser = await users.login(email, password);
 
   const { token } = loginnedUser;
 
