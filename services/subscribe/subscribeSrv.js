@@ -1,4 +1,4 @@
-const { User } = require('../db/usersModel');
+const { User } = require('../../db/usersModel');
 
 // TODO: subscribe validation,
 const subscribeUser = async (id, emailToSubscribe) => {

@@ -1,4 +1,4 @@
-const { User } = require('../db/usersModel');
+const { User } = require('../../db/usersModel');
 
 const updateById = async (userId, { name, email }) => {
   const result = await User.findByIdAndUpdate(

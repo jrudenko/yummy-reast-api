@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 require('dotenv').config();
-const { User } = require('../db/usersModel');
+const { User } = require('../../db/usersModel');
 // const jwt = require('jsonwebtoken');
 // const { v4: uuidv4 } = require('uuid');
 // const { JWT_SECRET } = process.env;
@@ -18,7 +18,7 @@ const registerUserService = async ({ name, email, password }) => {
   return createdUser;
 };
 
-const verifyUserService = async (verificationToken) => {
+const verifyUserService = async verificationToken => {
   try {
     const searchTokenResult = await User.findOne({
       verificationToken,
