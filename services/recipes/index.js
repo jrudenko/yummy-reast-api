@@ -1,5 +1,7 @@
-const { recipesSearchByCategory } = require('./recipesSearchByCategory');
+const { searchByCategory } = require('./searchByCategory');
+const { searchById } = require('./searchById');
 
 module.exports = {
-  recipesSearchByCategory,
+  searchByCategory,
+  searchById,
 };

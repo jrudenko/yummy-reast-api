@@ -8,7 +8,6 @@ const updateByIdControllers = catchAsyncWrapper(async (req, res) => {
   const { userId } = req.params;
   if (userId !== req.user._id) {
     return res.status(404).json({
-      code: 404,
       message: 'Not autorized',
     });
   }
