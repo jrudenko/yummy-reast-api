@@ -6,7 +6,7 @@ const searchKeyWordSchema = Joi.object().keys({
 });
 
 const searchKeyWordValidate = (req, res, next) => {
-  const { error, value } = searchKeyWordSchema.validate(req.params);
+  const { error, value } = searchKeyWordSchema.validate(req.body);
   if (error) {
     return res.status(400).json({ error: error.message });
   }

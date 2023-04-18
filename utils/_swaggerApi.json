@@ -401,116 +401,28 @@
         }
       }
     },
-    "/api/search": {
-      "post": {
-        "summary": "Search recipes",
-        "tags": [
-          "Receipes"
-        ],
-        "description": "search recipes by key word",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Subscribe"
-              },
-              "example": {
-                "keyWord": "pot"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Array of recipes when search result is no empty",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "searchResult": {
-                      "type": "array",
-                      "items": {
-                        "type": "object"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "when search has no result"
-          }
-        }
-      }
-    },
-    "/api/ingredients/": {
-      "post": {
-        "summary": "Search recipes",
-        "tags": [
-          "Receipes"
-        ],
-        "description": "search recipes by key word",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Subscribe"
-              },
-              "example": {
-                "keyWord": "basil"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Array of recipes when search result is no empty",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "searchResult": {
-                      "type": "array",
-                      "items": {
-                        "type": "object"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "when search has no result"
-          }
-        }
-      }
-    },
-    "/api/ingredients/list": {
+    "/api/search/{keyWord}": {
       "get": {
-        "summary": "Get a list of ingredients",
+        "summary": "Seasrch recipes",
         "tags": [
           "Receipes"
         ],
-        "description": "received a list of all ingredients",
+        "description": "search recipes by key word",
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "keyWord",
+            "in": "path",
+            "required": true,
+            "description": "key word to search recipes",
+            "schema": {
+              "type": "string",
+              "example": "pot"
+            }
           }
         ],
         "responses": {
@@ -531,6 +443,9 @@
                 }
               }
             }
+          },
+          "204": {
+            "description": "when search has no result"
           }
         }
       }

@@ -1,7 +1,12 @@
 const { Ingredients } = require('../../db/ingredientsModel');
 
-const ingredientsSearch = async () => {
-  const search = await Ingredients.find();
+const ingredientsSearch = async (keyWord) => {
+  if (!keyWord) {
+    const search = await Ingredients.find();
+    return search;
+  }
+
+  const search = await Ingredients.find({ $text: { $search: keyWord } });
 
   return search;
 };

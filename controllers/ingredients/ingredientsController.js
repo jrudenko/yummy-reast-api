@@ -8,9 +8,15 @@ const ingredientsListController = catchAsyncWrapper(async (req, res) => {
     searchResult,
   });
 });
-
+// TODO: refactor both in one
 const ingredientsSearchController = catchAsyncWrapper(async (req, res) => {
-  const searchResult = await search.ingredientsSearch();
+  const {keyWord} = req.body;
+
+  const searchResult = await search.ingredientsSearch(keyWord);
+
+  if (searchResult.length === 0) {
+    return res.status(204).json();
+  }
 
   res.status(200).json({
     searchResult,
