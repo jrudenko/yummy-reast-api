@@ -4,6 +4,7 @@ const { updateById } = require('./updateById');
 const { subscribeUser } = require('./subscribeSrv');
 const { sendSubscribeMail } = require('./sendSubscribeMail');
 const { recipesSearchByCategory } = require('./recipesSearchByCategory');
+const { searchRecipesByTitle } = require('./searchReceipesByTitle');
 
 module.exports = {
   registerUserService,
@@ -13,4 +14,5 @@ module.exports = {
   subscribeUser,
   sendSubscribeMail,
   recipesSearchByCategory,
+  searchRecipesByTitle,
 };
