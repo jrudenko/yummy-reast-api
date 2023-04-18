@@ -6,7 +6,11 @@ const searchController = catchAsyncWrapper(async (req, res) => {
 
   const searchResult = await searchRecipesByTitle(keyWord);
 
-  res.json({
+  if (searchResult.length === 0) {
+    return res.status(204).json()
+  }
+
+  res.status(200).json({
     searchResult,
   });
 });
