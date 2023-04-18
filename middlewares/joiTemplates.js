@@ -7,10 +7,12 @@ const email = Joi.string().email({
 });
 const password = Joi.string().pattern(/^[a-zA-Z0-9.;,/.;'`)(*&^%$#@!~]{7,32}$/);
 const verificationToken = Joi.string().guid({ version: 'uuidv4' });
+const recipeSearchByTitle = Joi.string().min(2).max(10);
 
 module.exports = {
   name,
   email,
   password,
   verificationToken,
+  recipeSearchByTitle,
 };
