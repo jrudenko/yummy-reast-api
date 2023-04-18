@@ -8,7 +8,7 @@ router.get('/category-list', auth, ctrl.getCategoryListController);
 
 router.get('/main-page', auth, ctrl.getMainPageController);
 
-router.get('category/:category', auth, ctrl.searchByCategoryController);
+router.get('/category/:category', auth, ctrl.searchByCategoryController);
 
 router.get('/:recipesId', auth, ctrl.searchByIdController);
 
