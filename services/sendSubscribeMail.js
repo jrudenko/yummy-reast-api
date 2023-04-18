@@ -3,7 +3,7 @@ const { catchAsyncWrapper } = require('../utils');
 
 const { SENDGRID_FROM, SENDGRID_API_KEY } = process.env;
 
-const sendMail = async (email) => {
+const sendMail = async email => {
   sgMail.setApiKey(SENDGRID_API_KEY);
   const msg = {
     to: email,
@@ -23,7 +23,7 @@ const sendMail = async (email) => {
   }
 };
 
-const sendSubscribeMail = catchAsyncWrapper(async (email) => {
+const sendSubscribeMail = catchAsyncWrapper(async email => {
   await sendMail(email);
 
   return {
