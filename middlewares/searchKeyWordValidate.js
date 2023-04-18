@@ -1,12 +1,12 @@
 const Joi = require('joi');
 const { recipeSearchByTitle } = require('./joiTemplates');
 
-const searchRecipeSchema = Joi.object().keys({
+const searchKeyWordSchema = Joi.object().keys({
   keyWord: recipeSearchByTitle.required(),
 });
 
-const searchRecipeValidate = (req, res, next) => {
-  const { error, value } = searchRecipeSchema.validate(req.params);
+const searchKeyWordValidate = (req, res, next) => {
+  const { error, value } = searchKeyWordSchema.validate(req.body);
   if (error) {
     return res.status(400).json({ error: error.message });
   }
@@ -15,5 +15,5 @@ const searchRecipeValidate = (req, res, next) => {
 };
 
 module.exports = {
-  searchRecipeValidate,
+  searchKeyWordValidate,
 };

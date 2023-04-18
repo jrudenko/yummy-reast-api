@@ -401,9 +401,9 @@
         }
       }
     },
-    "/api/search/{keyWord}": {
-      "get": {
-        "summary": "Seasrch recipes",
+    "/api/search": {
+      "post": {
+        "summary": "Search recipes",
         "tags": [
           "Receipes"
         ],
@@ -413,18 +413,19 @@
             "bearerAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "keyWord",
-            "in": "path",
-            "required": true,
-            "description": "key word to search recipes",
-            "schema": {
-              "type": "string",
-              "example": "pot"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Subscribe"
+              },
+              "example": {
+                "keyWord": "pot"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Array of recipes when search result is no empty",
@@ -446,6 +447,90 @@
           },
           "204": {
             "description": "when search has no result"
+          }
+        }
+      }
+    },
+    "/api/ingredients/": {
+      "post": {
+        "summary": "Search recipes",
+        "tags": [
+          "Receipes"
+        ],
+        "description": "search recipes by key word",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Subscribe"
+              },
+              "example": {
+                "keyWord": "basil"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Array of recipes when search result is no empty",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "searchResult": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "when search has no result"
+          }
+        }
+      }
+    },
+    "/api/ingredients/list": {
+      "get": {
+        "summary": "Get a list of ingredients",
+        "tags": [
+          "Receipes"
+        ],
+        "description": "received a list of all ingredients",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of recipes when search result is no empty",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "searchResult": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
