@@ -400,6 +400,52 @@
           }
         }
       }
+    },
+    "/api/search/{keyWord}": {
+      "get": {
+        "summary": "Seasrch recipes",
+        "tags": [
+          "Receipes"
+        ],
+        "description": "search recipes by key word",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "keyWord",
+            "in": "path",
+            "required": true,
+            "description": "key word to search recipes",
+            "schema": {
+              "type": "string",
+              "example": "pot"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of recipes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "searchResult": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
