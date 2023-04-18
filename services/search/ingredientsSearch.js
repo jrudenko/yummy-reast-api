@@ -1,4 +1,5 @@
 const { Ingredients } = require('../../db/ingredientsModel');
+const { Recipes } = require('../../db/recipesModel');
 
 const ingredientsSearch = async (keyWord) => {
   if (!keyWord) {
@@ -6,9 +7,23 @@ const ingredientsSearch = async (keyWord) => {
     return search;
   }
 
-  const search = await Ingredients.find({ $text: { $search: keyWord } });
+  const searchedIngredient = await Ingredients.findOne({
+    // $text: { $search: keyWord },
+    ttl: keyWord,
+  }).select('_id: 1');
 
-  return search;
+  const ingredientId = searchedIngredient._id;
+  // console.log('CL: ~ file: ingredientsSearch.js:18 ~ ingredientId:', ingredientId);
+
+  const searchRecipes = await Recipes.find({
+    ingredients: {
+      $elemMatch: {
+        id: ingredientId,
+      },
+    },
+  });
+
+  return searchRecipes;
 };
 
 module.exports = {
