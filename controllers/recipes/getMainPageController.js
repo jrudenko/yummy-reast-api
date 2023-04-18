@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-// const { getFromMainPage } = require('../../services');
 const { Recipes } = require('../../db/recipesModel');
 
 const { catchAsyncWrapper } = require('../../utils');
