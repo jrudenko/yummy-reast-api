@@ -427,7 +427,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Array of recipes when search result is no empty",
+            "description": "Array of recipes",
             "content": {
               "application/json": {
                 "schema": {
@@ -443,9 +443,6 @@
                 }
               }
             }
-          },
-          "204": {
-            "description": "when search has no result"
           }
         }
       }

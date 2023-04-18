@@ -9,7 +9,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./utils/swaggerApi.json');
 // * SWAGGER SECTION END
 
-const { usersRouter, recipesRouter, subscribeRouter } = require('./routes');
+const { usersRouter, recipesRouter, subscribeRouter, searchRouter } = require('./routes');
 
 const { DEV_ENV } = process.env;
 
@@ -29,6 +29,8 @@ app.use('/api/auth', usersRouter);
 app.use('/api/recipes', recipesRouter);
 
 app.use('/api/subscribe', subscribeRouter);
+
+app.use('/api/search', searchRouter);
 
 app.get('/api', (req, res) => {
   res.send(
