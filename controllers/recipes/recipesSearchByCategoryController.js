@@ -7,10 +7,9 @@ const { catchAsyncWrapper } = require('../../utils');
 const searchByCategoryController = catchAsyncWrapper(async (req, res) => {
   const { category } = req.params;
   const result = await recipesSearchByCategory(category);
-  if (!result) {
-    res.json({
-      status: 204,
-    });
+
+  if (result.length === 0) {
+    return res.status(204).json();
   }
   res.json({
     status: 'success',
