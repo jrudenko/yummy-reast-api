@@ -1,8 +1,8 @@
 require('dotenv').config();
 const { Recipes } = require('../../db/recipesModel');
 
-const searchById = async recipesId => {
-  const result = await Recipes.findById(recipesId);
+const searchById = async id => {
+  const result = await Recipes.findById(id);
   return result;
 };
 
