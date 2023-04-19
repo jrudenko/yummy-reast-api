@@ -402,7 +402,7 @@
       }
     },
     "/api/search": {
-      "post": {
+      "get": {
         "summary": "Search recipes",
         "tags": [
           "Receipes"
@@ -413,19 +413,17 @@
             "bearerAuth": []
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Subscribe"
-              },
-              "example": {
-                "keyWord": "pot"
-              }
-            }
+        "parameters": [
+          {
+            "in": "query",
+            "name": "query",
+            "schema": {
+              "type": "string",
+              "example": "pot"
+            },
+            "required": true
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Array of recipes when search result is no empty",
@@ -452,7 +450,7 @@
       }
     },
     "/api/ingredients/": {
-      "post": {
+      "get": {
         "summary": "Search recipes",
         "tags": [
           "Receipes"
@@ -463,19 +461,17 @@
             "bearerAuth": []
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Subscribe"
-              },
-              "example": {
-                "keyWord": "basil"
-              }
-            }
+        "parameters": [
+          {
+            "in": "query",
+            "name": "query",
+            "schema": {
+              "type": "string",
+              "example": "Basil Leaves"
+            },
+            "required": true
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Array of recipes when search result is no empty",

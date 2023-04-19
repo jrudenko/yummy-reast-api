@@ -1,7 +1,7 @@
 const { Recipes } = require('../../db/recipesModel');
 
-const searchRecipesByTitle = async keyWord => {
-  const search = await Recipes.find({ $text: { $search: keyWord } });
+const searchRecipesByTitle = async (query) => {
+  const search = await Recipes.find({ $text: { $search: query } });
   return search;
 };
 
