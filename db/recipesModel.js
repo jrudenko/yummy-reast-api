@@ -12,12 +12,27 @@ const recipesSchema = new Schema(
     },
     category: {
       type: String,
+      enum: [
+        'Pork',
+        'Vegetarian',
+        'Beef',
+        'Breakfast',
+        'Chicken',
+        'Dessert',
+        'Goat',
+        'Lamb',
+        'Miscellaneous',
+        'Pasta',
+        'Seafood',
+        'Side',
+        'Starter',
+        'Vegan',
+      ],
       required: true,
       unique: true,
     },
     area: {
       type: String,
-      required: true,
     },
     instructios: {
       type: String,
@@ -29,12 +44,11 @@ const recipesSchema = new Schema(
     },
     thumb: {
       type: String,
-      required: true,
+      // required: true,
       match: /^(http|https):\/\/[^ "]+$/, // валидация URL-адреса
     },
     preview: {
       type: String,
-      required: true,
       match: /^(http|https):\/\/[^ "]+$/, // валидация URL-адреса
     },
     time: {
@@ -43,12 +57,10 @@ const recipesSchema = new Schema(
     },
     youtube: {
       type: String,
-      required: true,
       match: /^(http|https):\/\/[^ "]+$/, // валидация URL-адреса
     },
     tags: {
       type: Array,
-      required: true,
     },
     ingredients: {
       type: Array,

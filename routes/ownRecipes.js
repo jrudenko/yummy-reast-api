@@ -8,4 +8,6 @@ router.delete('/:recipesId', auth, ctrl.removeController);
 
 router.get('/', auth, ctrl.getOwnRecipes);
 
+router.post('/', auth, ctrl.addController);
+
 module.exports = router;
