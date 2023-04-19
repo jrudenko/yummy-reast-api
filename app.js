@@ -15,6 +15,7 @@ const {
   subscribeRouter,
   searchRouter,
   ingredientsRouter,
+  favoriteRouter,
 } = require('./routes');
 
 const { DEV_ENV } = process.env;
@@ -39,6 +40,8 @@ app.use('/api/subscribe', subscribeRouter);
 app.use('/api/search', searchRouter);
 
 app.use('/api/ingredients', ingredientsRouter);
+
+app.use('/api/favorite', favoriteRouter);
 
 app.get('/api', (req, res) => {
   res.send(
