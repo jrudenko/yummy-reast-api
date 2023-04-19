@@ -23,7 +23,13 @@ const login = async (email, password) => {
     id: user._id,
   };
   const token = jwt.sign(payload, JWT_SECRET);
-  const loginnedUser = await User.findByIdAndUpdate(user._id, { token });
+  const loginnedUser = await User.findByIdAndUpdate(
+    user._id,
+    { token },
+    {
+      new: true,
+    }
+  );
 
   return loginnedUser;
 };

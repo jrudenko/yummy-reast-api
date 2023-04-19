@@ -6,4 +6,6 @@ const router = express.Router();
 
 router.delete('/:recipesId', auth, ctrl.removeController);
 
+router.get('/', auth, ctrl.getOwnRecipes);
+
 module.exports = router;
