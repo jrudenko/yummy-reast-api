@@ -535,7 +535,7 @@
       "get": {
         "summary": "Get a list of favorite recipes",
         "tags": [
-          "Find"
+          "Favorite"
         ],
         "description": "received list is an array",
         "security": [
@@ -561,6 +561,86 @@
                 }
               }
             }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add recipe to favorites",
+        "tags": [
+          "Favorite"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "recipeId": "640cd5ac2d9fecf12e8897ef"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Array of recipes when search result is no empty",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "favorites": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "640cd5ag2d9fecf12e8897ef",
+                        "640cd5dc2d9fecf12e889817",
+                        "640cd5ac2d9fenf12e889823"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/favorite/{id}": {
+      "delete": {
+        "summary": "Delete recipe from favorites",
+        "tags": [
+          "Favorite"
+        ],
+        "description": "received list is an array",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "user id",
+            "schema": {
+              "type": "string",
+              "example": "640cd5ac2d9fecf12e8897ef"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "when search has no result"
           }
         }
       }

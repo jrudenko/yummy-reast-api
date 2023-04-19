@@ -9,6 +9,6 @@ router.post('/', auth, ctrl.addFavoriteController);
 
 router.get('/', auth, ctrl.getFavoriteController);
 
-router.delete('/', auth, ctrl.deleteFavoriteController);
+router.delete('/:id', auth, ctrl.deleteFavoriteController);
 
 module.exports = router;

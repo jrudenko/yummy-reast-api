@@ -1,9 +1,8 @@
 // const { search } = require('../../services');
-const { addFavorite, getFavorites } = require('../../services/favorite');
+const { addFavorite, getFavorites,deleteFavorite } = require('../../services/favorite');
 const { catchAsyncWrapper } = require('../../utils');
 
 const addFavoriteController = catchAsyncWrapper(async (req, res) => {
-  await console.log('~shoppingListControllers.js [8]:', 'test');
 
   const { recipeId } = req.body;
   const { _id: userId } = req.user;
@@ -11,7 +10,7 @@ const addFavoriteController = catchAsyncWrapper(async (req, res) => {
   const addRequestResult = await addFavorite(userId, recipeId);
   const { favorites } = addRequestResult;
 
-  res.status(200).json({
+  res.status(201).json({
     favorites,
   });
 });
@@ -31,11 +30,12 @@ const getFavoriteController = catchAsyncWrapper(async (req, res) => {
 });
 
 const deleteFavoriteController = catchAsyncWrapper(async (req, res) => {
-  await console.log('~shoppingListControllers.js [8]:', 'test');
+  const { id: idToDelete } = req.params;
+  const { _id: userId } = req.user;
 
-  res.status(200).json({
-    message: 'test deleteFavoriteController',
-  });
+  await deleteFavorite(userId, idToDelete);
+
+  res.status(204).json();
 });
 
 module.exports = {
