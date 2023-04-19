@@ -1,13 +1,12 @@
 require('dotenv').config();
+const mongoose = require('mongoose');
 
 const { recipes } = require('../../services');
 
 const { catchAsyncWrapper } = require('../../utils');
 
 const searchRecipesController = catchAsyncWrapper(async (req, res) => {
-  const { category } = req.query;
-  const { id } = req.query;
-  // let result;
+  const { category, id } = req.query;
 
   if (category) {
     const result = await recipes.searchByCategory(category);
@@ -21,6 +20,13 @@ const searchRecipesController = catchAsyncWrapper(async (req, res) => {
     });
   }
   if (id) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        status: 'error',
+        code: 400,
+        message: 'Bad Request. Invalid ID',
+      });
+    }
     const result = await recipes.searchById(id);
     if (result.length === 0) {
       return res.status(204).json();
