@@ -5,6 +5,7 @@ const {
 } = require('./usersValidate');
 const { auth } = require('./auth');
 const { searchKeyWordValidate } = require('./searchKeyWordValidate');
+const { upload } = require('./upload');
 
 module.exports = {
   createUserValidate,
@@ -12,4 +13,5 @@ module.exports = {
   auth,
   subscribeUserValidate,
   searchKeyWordValidate,
+  upload,
 };

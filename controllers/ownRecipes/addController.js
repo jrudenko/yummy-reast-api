@@ -7,6 +7,8 @@ const { catchAsyncWrapper } = require('../../utils');
 const addController = catchAsyncWrapper(async (req, res) => {
   const userData = req.body;
   const { _id } = req.user;
+  console.log(req.file);
+
   const file = req.file.buffer;
 
   const newRecipe = await ownRecipes.addOwnRecipe(userData, file, _id);
