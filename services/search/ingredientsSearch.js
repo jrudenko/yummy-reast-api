@@ -1,19 +1,20 @@
 const { Ingredients } = require('../../db/ingredientsModel');
 const { Recipes } = require('../../db/recipesModel');
 
-const ingredientsSearch = async (keyWord) => {
-  if (!keyWord) {
+const ingredientsSearch = async (query) => {
+  if (!query) {
     const search = await Ingredients.find();
     return search;
   }
 
   const searchedIngredient = await Ingredients.findOne({
-    // $text: { $search: keyWord },
-    ttl: keyWord,
+    // $text: { $search: query },
+    ttl: query
   }).select('_id: 1');
 
+  if (!searchedIngredient) return []
+
   const ingredientId = searchedIngredient._id;
-  // console.log('CL: ~ file: ingredientsSearch.js:18 ~ ingredientId:', ingredientId);
 
   const searchRecipes = await Recipes.find({
     ingredients: {

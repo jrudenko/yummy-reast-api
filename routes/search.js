@@ -1,9 +1,9 @@
 const express = require('express');
 const { search: ctrl } = require('../controllers');
-const { auth, searchKeyWordValidate } = require('../middlewares');
+const { auth, queryStringValidate } = require('../middlewares');
 
 const router = express.Router();
 
-router.post('/', auth, searchKeyWordValidate, ctrl.searchController);
+router.get('/', auth, queryStringValidate, ctrl.searchController);
 
 module.exports = router;
