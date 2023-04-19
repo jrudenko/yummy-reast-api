@@ -3,6 +3,7 @@ const recipes = require('./recipes');
 const subscribe = require('./subscribe');
 const search = require('./search');
 const ingredients = require('./ingredients');
+const ownRecipes = require('./ownRecipes');
 
 module.exports = {
   users,
@@ -10,4 +11,5 @@ module.exports = {
   subscribe,
   search,
   ingredients,
+  ownRecipes,
 };
