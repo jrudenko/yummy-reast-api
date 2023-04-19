@@ -530,6 +530,40 @@
           }
         }
       }
+    },
+    "/api/favorite": {
+      "get": {
+        "summary": "Get a list of favorite recipes",
+        "tags": [
+          "Find"
+        ],
+        "description": "received list is an array",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of recipes when search result is no empty",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "favoriteRecipes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

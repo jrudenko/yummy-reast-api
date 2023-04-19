@@ -3,6 +3,7 @@ const recipesRouter = require('./recipes');
 const subscribeRouter = require('./subscribe');
 const searchRouter = require('./search');
 const ingredientsRouter = require('./ingredients');
+const favoriteRouter = require('./favorite');
 
 module.exports = {
   usersRouter,
@@ -10,4 +11,5 @@ module.exports = {
   subscribeRouter,
   searchRouter,
   ingredientsRouter,
+  favoriteRouter,
 };
