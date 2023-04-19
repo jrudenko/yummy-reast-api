@@ -28,18 +28,13 @@ const searchRecipesController = catchAsyncWrapper(async (req, res) => {
       });
     }
     const result = await recipes.searchById(id);
-    if (result.length === 0) {
-      return res.status(204).json();
-    }
+
     return res.json({
       status: 'success',
       code: 200,
       result,
     });
   }
-
-  // console.log(category);
-  // console.log(id);
 
   return res.status(400).json({
     status: 'error',
