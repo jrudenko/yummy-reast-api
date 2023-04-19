@@ -5,7 +5,7 @@ const { recipes } = require('../../services');
 const { catchAsyncWrapper } = require('../../utils');
 
 const searchByIdController = catchAsyncWrapper(async (req, res) => {
-  const { recipesId } = req.params;
+  const { recipesId } = req.query;
   const result = await recipes.searchById(recipesId);
 
   if (result.length === 0) {
