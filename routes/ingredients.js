@@ -1,11 +1,11 @@
 const express = require('express');
 const { ingredients: ctrl } = require('../controllers');
-const { auth, searchKeyWordValidate } = require('../middlewares');
+const { auth, queryStringValidate } = require('../middlewares');
 
 const router = express.Router();
 
 router.get('/list', auth, ctrl.ingredientsListController);
 
-router.post('/', auth, searchKeyWordValidate, ctrl.ingredientsSearchController);
+router.get('/', auth, queryStringValidate, ctrl.ingredientsSearchController);
 
 module.exports = router;

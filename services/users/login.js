@@ -12,7 +12,7 @@ const login = async (email, password) => {
   const user = await User.findOne({ email }).select('+password');
   if (!user) {
     throw new Unauthorized(
-      'Email is wrong or not varify, or password is wrong'
+      'Email is wrong or not verify, or password is wrong'
     );
   }
   const passCompare = bcrypt.compareSync(password, user.password);

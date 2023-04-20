@@ -4,14 +4,12 @@ const {
   subscribeUserValidate,
 } = require('./usersValidate');
 const { auth } = require('./auth');
-const { searchKeyWordValidate } = require('./searchKeyWordValidate');
-const { upload } = require('./upload');
+const { queryStringValidate } = require('./queryStringValidate');
 
 module.exports = {
   createUserValidate,
   loginUserValidate,
   auth,
   subscribeUserValidate,
-  searchKeyWordValidate,
-  upload,
+  queryStringValidate,
 };
