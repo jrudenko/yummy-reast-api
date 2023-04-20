@@ -1,3 +1,4 @@
+const { object } = require('joi');
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
@@ -28,6 +29,10 @@ const userSchema = new Schema({
   },
   favorites: {
     type: [mongoose.ObjectId],
+    default: [],
+  },
+  shopping: {
+    type: [],
     default: [],
   },
 });

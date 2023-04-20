@@ -62,6 +62,22 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "name already used"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -120,17 +136,48 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "error email is required"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Email or password is wrong"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
     },
     "/api/auth/current": {
       "get": {
-        "summary": "Update existed user",
+        "summary": "Get info of loginned user",
         "tags": [
           "User API"
         ],
-        "description": "Update name OR email fields os user record",
         "security": [
           {
             "bearerAuth": []
@@ -168,6 +215,22 @@
                           "example": "example@example.com"
                         }
                       }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Not authorized"
                     }
                   }
                 }
@@ -235,18 +298,29 @@
                       "type": "string",
                       "example": "fields update"
                     },
-                    "user": {
+                    "data": {
                       "type": "object",
                       "properties": {
-                        "name": {
-                          "type": "string",
-                          "example": "UserName"
-                        },
-                        "email": {
-                          "type": "string",
-                          "example": "example@example.com"
+                        "updatedUser": {
+                          "type": "object"
                         }
                       }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Not authorized"
                     }
                   }
                 }
@@ -641,6 +715,134 @@
         "responses": {
           "204": {
             "description": "when search has no result"
+          }
+        }
+      }
+    },
+    "/api/shopping-list": {
+      "get": {
+        "summary": "Get a list of ingredients added to shopping list",
+        "tags": [
+          "Shopping list"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of ingredients data objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "shoppingList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add an ingredient and its quantity to shpooing list",
+        "tags": [
+          "Shopping list"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "id": "005c2dd963a319ea671e368c",
+                "iid": "640c2dd963a319ea671e368c",
+                "ttl": "Challots",
+                "thb": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564674/ovlvnvcuzttiplnzewm3.png",
+                "number": "400 g"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Array of recipes when search result is no empty",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "shoppingList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/shopping-list/{id}": {
+      "delete": {
+        "summary": "Delete ingredient from shopping list",
+        "tags": [
+          "Shopping list"
+        ],
+        "description": "received list is an array",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "id record to delete",
+            "schema": {
+              "type": "string",
+              "example": "640cd5ac2d9fecf12e8897ef"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "when delete was successful"
+          },
+          "404": {
+            "description": "when search has no result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "nothing to delete"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
