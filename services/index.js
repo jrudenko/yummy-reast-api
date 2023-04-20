@@ -2,7 +2,8 @@ const users = require('./users');
 const recipes = require('./recipes');
 const subscribeUser = require('./subscribe');
 const search = require('./search');
-const ingredientsSearch = require('./search')
+const ingredientsSearch = require('./search');
+const ownRecipes = require('./ownRecipes');
 const favorite = require('./favorite');
 
 module.exports = {
@@ -11,5 +12,6 @@ module.exports = {
   subscribeUser,
   search,
   ingredientsSearch,
+  ownRecipes,
   favorite,
 };
