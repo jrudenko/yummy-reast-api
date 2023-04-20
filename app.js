@@ -9,6 +9,8 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./utils/swaggerApi.json');
 // * SWAGGER SECTION END
 
+const customErrorMessage = require('./utils/customErrorsMessages');
+
 const {
   usersRouter,
   recipesRouter,
@@ -16,6 +18,7 @@ const {
   searchRouter,
   ingredientsRouter,
   favoriteRouter,
+  shoppingListRouter,
 } = require('./routes');
 
 const { DEV_ENV } = process.env;
@@ -43,6 +46,8 @@ app.use('/api/ingredients', ingredientsRouter);
 
 app.use('/api/favorite', favoriteRouter);
 
+app.use('/api/shopping-list', shoppingListRouter);
+
 app.get('/api', (req, res) => {
   res.send(
     'Hello World! This is the first response from YUMMY backend of 4th project Team :-)'
@@ -63,8 +68,9 @@ app.use((err, req, res, next) => {
   const { status } = err; // there we get error status, that was setting on user useMiddlewares
 
   if (DEV_ENV === 'development') {
-    res.status(status || 500).json({
-      message: err.message,
+    const { status: customStatus, message } = customErrorMessage(err.message);
+    res.status(customStatus || 500).json({
+      message,
       stack: err.stack,
     });
   } else {

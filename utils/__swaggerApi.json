@@ -62,22 +62,6 @@
                 }
               }
             }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "name already used"
-                    }
-                  }
-                }
-              }
-            }
           }
         }
       }
@@ -136,48 +120,17 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "error email is required"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Email or password is wrong"
-                    }
-                  }
-                }
-              }
-            }
           }
         }
       }
     },
     "/api/auth/current": {
       "get": {
-        "summary": "Get info of loginned user",
+        "summary": "Update existed user",
         "tags": [
           "User API"
         ],
+        "description": "Update name OR email fields os user record",
         "security": [
           {
             "bearerAuth": []
@@ -215,22 +168,6 @@
                           "example": "example@example.com"
                         }
                       }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Not authorized"
                     }
                   }
                 }
@@ -298,29 +235,18 @@
                       "type": "string",
                       "example": "fields update"
                     },
-                    "data": {
+                    "user": {
                       "type": "object",
                       "properties": {
-                        "updatedUser": {
-                          "type": "object"
+                        "name": {
+                          "type": "string",
+                          "example": "UserName"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "example@example.com"
                         }
                       }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Not authorized"
                     }
                   }
                 }

@@ -4,6 +4,7 @@ const subscribeRouter = require('./subscribe');
 const searchRouter = require('./search');
 const ingredientsRouter = require('./ingredients');
 const favoriteRouter = require('./favorite');
+const shoppingListRouter = require('./shoppingList');
 
 module.exports = {
   usersRouter,
@@ -12,4 +13,5 @@ module.exports = {
   searchRouter,
   ingredientsRouter,
   favoriteRouter,
+  shoppingListRouter,
 };
