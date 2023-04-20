@@ -1,9 +1,12 @@
 // const { search } = require('../../services');
-const { addFavorite, getFavorites,deleteFavorite } = require('../../services/favorite');
+const {
+  addFavorite,
+  getFavorites,
+  deleteFavorite,
+} = require('../../services/favorite');
 const { catchAsyncWrapper } = require('../../utils');
 
 const addFavoriteController = catchAsyncWrapper(async (req, res) => {
-
   const { recipeId } = req.body;
   const { _id: userId } = req.user;
 

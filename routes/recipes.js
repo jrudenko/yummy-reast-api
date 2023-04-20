@@ -10,6 +10,8 @@ router.get('/main-page', auth, ctrl.getMainPageController);
 
 router.get('/category/:category', auth, ctrl.searchByCategoryController);
 
-router.get('/:recipesId', auth, ctrl.searchByIdController);
+router.get('/id/:recipesId', auth, ctrl.searchByIdController);
+
+router.get('/popular-recipe', auth, ctrl.popularRecipeController);
 
 module.exports = router;
