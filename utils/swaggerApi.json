@@ -15,7 +15,7 @@
       "post": {
         "summary": "Register a new user",
         "tags": [
-          "User API"
+          "Auth"
         ],
         "description": "description",
         "requestBody": {
@@ -86,7 +86,7 @@
       "post": {
         "summary": "Login existed user",
         "tags": [
-          "User API"
+          "Auth"
         ],
         "description": "description",
         "requestBody": {
@@ -176,7 +176,7 @@
       "get": {
         "summary": "Get info of loginned user",
         "tags": [
-          "User API"
+          "Auth"
         ],
         "security": [
           {
@@ -244,7 +244,7 @@
       "put": {
         "summary": "Update existed user",
         "tags": [
-          "User API"
+          "Auth"
         ],
         "description": "Update name OR email fields os user record",
         "security": [
@@ -334,7 +334,7 @@
       "get": {
         "summary": "Update existed user",
         "tags": [
-          "User API"
+          "Auth"
         ],
         "description": "Logout loginned in user",
         "security": [
