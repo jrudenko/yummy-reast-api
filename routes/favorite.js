@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post('/', auth, ctrl.addFavoriteController);
 
-router.get('/', auth, ctrl.getFavoriteController);
+router.get('/', ctrl.getFavoriteController);
 
 router.delete('/:id', auth, ctrl.deleteFavoriteController);
 
