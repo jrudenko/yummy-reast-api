@@ -8,7 +8,7 @@ const searchByIdController = catchAsyncWrapper(async (req, res) => {
   const { recipesId } = req.params;
   const result = await recipes.searchById(recipesId);
 
-  if (result.length === 0) {
+  if (!result) {
     return res.status(204).json();
   }
   res.json({
