@@ -7,7 +7,7 @@ const recipesSchema = new Schema(
   {
     title: {
       type: String,
-      // required: true,
+      required: true,
       unique: true,
     },
     category: {
@@ -44,7 +44,7 @@ const recipesSchema = new Schema(
     },
     thumb: {
       type: String,
-      // required: true,
+      required: true,
       match: /^(http|https):\/\/[^ "]+$/, // валидация URL-адреса
     },
     preview: {
