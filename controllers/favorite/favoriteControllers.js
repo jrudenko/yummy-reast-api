@@ -33,12 +33,13 @@ const getFavoriteController = catchAsyncWrapper(async (req, res) => {
 
   const { totalFavorites, currentPage, skip } = paginationData;
   const limit = 4;
+  const returnedPage = Number(currentPage)
 
   const favoriteRecipes = await getFavorites(favorites, skip, limit);
 
   res.status(200).json({
     totalFavorites,
-    currentPage,
+    returnedPage,
     favoriteRecipes,
   });
 });
