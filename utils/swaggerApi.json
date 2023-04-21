@@ -611,10 +611,21 @@
         "tags": [
           "Favorite"
         ],
-        "description": "received list is an array",
+        "description": "received list of favorite recipes is an array. With fixed pagination - 4 items per page. If page not setted - return first page. If page in query setted more than a real pages count according to all items - return last awailable page.",
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "number",
+              "example": 2
+            },
+            "required": false
           }
         ],
         "responses": {

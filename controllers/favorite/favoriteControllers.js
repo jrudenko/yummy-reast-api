@@ -1,8 +1,8 @@
-// const { search } = require('../../services');
 const {
   addFavorite,
   getFavorites,
   deleteFavorite,
+  favoritesPagination,
 } = require('../../services/favorite');
 const { catchAsyncWrapper } = require('../../utils');
 
@@ -19,15 +19,26 @@ const addFavoriteController = catchAsyncWrapper(async (req, res) => {
 });
 
 const getFavoriteController = catchAsyncWrapper(async (req, res) => {
-  const { favorites } = req.user;
+  const { favorites, _id: userId } = req.user;
+  let { page } = req.query;
+  if (!page) {
+    page = 1;
+  }
 
   if (!favorites) {
     return res.status(204).json();
   }
 
-  const favoriteRecipes = await getFavorites(favorites);
+  const paginationData = await favoritesPagination(userId, page);
+
+  const { totalFavorites, currentPage, skip } = paginationData;
+  const limit = 4;
+
+  const favoriteRecipes = await getFavorites(favorites, skip, limit);
 
   res.status(200).json({
+    totalFavorites,
+    currentPage,
     favoriteRecipes,
   });
 });
