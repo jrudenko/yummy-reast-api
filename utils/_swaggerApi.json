@@ -636,6 +636,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "totalFavorites": {
+                      "type": "number"
+                    },
+                    "returnedPage": {
+                      "type": "number",
+                      "example": 2
+                    },
                     "favoriteRecipes": {
                       "type": "array",
                       "items": {
@@ -646,6 +653,9 @@
                 }
               }
             }
+          },
+          "204": {
+            "description": "when search has no result"
           }
         }
       },
