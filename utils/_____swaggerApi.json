@@ -899,7 +899,7 @@
         }
       }
     },
-    "/api/ownRecipes/": {
+    "/api/ownRecipes/{id}": {
       "post": {
         "summary": "NOT WORK Get an own recipe by id",
         "tags": [
@@ -911,15 +911,18 @@
             "bearerAuth": []
           }
         ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "$ref": "#/components/schemas/Recipe"
-              }
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "user id",
+            "schema": {
+              "type": "string",
+              "example": "640cd5ac2d9fecf12e8897f0"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Own reccipes",
@@ -948,9 +951,7 @@
             }
           }
         }
-      }
-    },
-    "/api/ownRecipes/{id}": {
+      },
       "delete": {
         "summary": "Get an own recipe by id",
         "tags": [
@@ -1330,52 +1331,6 @@
             "required": [
               "true"
             ]
-          }
-        }
-      },
-      "Recipe": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string",
-            "example": "soup"
-          },
-          "instructios": {
-            "type": "string",
-            "example": "instr example"
-          },
-          "category": {
-            "type": "string",
-            "example": "Beef"
-          },
-          "description": {
-            "type": "string",
-            "example": "descr example"
-          },
-          "thumb": {
-            "type": "string",
-            "example": "thumb example"
-          },
-          "time": {
-            "type": "string",
-            "example": 24
-          },
-          "ingredients": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "example": [
-              "640cd5ac2d9fecf12e889821"
-            ]
-          },
-          "owner": {
-            "type": "string",
-            "example": "643dab0682ade3006f67ecae"
-          },
-          "file": {
-            "type": "string",
-            "format": "binary"
           }
         }
       }
