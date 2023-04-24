@@ -810,7 +810,14 @@
                     "shoppingList": {
                       "type": "array",
                       "items": {
-                        "type": "object"
+                        "type": "object",
+                        "example": {
+                          "id": "005c2dd963a319ea671e368c",
+                          "iid": "640c2dd963a319ea671e368c",
+                          "ttl": "Challots",
+                          "thb": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564674/ovlvnvcuzttiplnzewm3.png",
+                          "number": "400 g"
+                        }
                       }
                     }
                   }
