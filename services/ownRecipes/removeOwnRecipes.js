@@ -8,7 +8,7 @@ const removeOwnRecipes = async (userId, recipesId) => {
     return null;
   }
 
-  if (String(recipe.owner) !== userId) {
+  if (recipe.owner.toString() !== userId.toString()) {
     return null;
   }
   const result = await Recipes.findByIdAndRemove(recipesId);
