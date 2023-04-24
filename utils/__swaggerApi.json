@@ -718,7 +718,7 @@
                       "type": "number",
                       "example": 200
                     },
-                    "data": {
+                    "flattenedResult": {
                       "type": "array",
                       "items": {
                         "type": "object",
@@ -769,7 +769,7 @@
         }
       }
     },
-    "/api/ownRecipes/{id}": {
+    "/api/recipes/ownRecipes/{id}": {
       "post": {
         "summary": "NOT WORK Get an own recipe by id",
         "tags": [
