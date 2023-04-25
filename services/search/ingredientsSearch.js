@@ -8,8 +8,8 @@ const ingredientsSearch = async (query) => {
   }
 
   const searchedIngredient = await Ingredients.findOne({
-    // $text: { $search: query },
-    ttl: query
+    $text: { $search: query },
+    // ttl: query
   }).select('_id: 1');
 
   if (!searchedIngredient) return []
