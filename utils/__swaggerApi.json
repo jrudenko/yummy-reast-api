@@ -1036,7 +1036,7 @@
         "tags": [
           "Favorite"
         ],
-        "description": "received list of favorite recipes is an array. With fixed pagination - 4 items per page. If page = 0 - return all data without pagination. If page in query setted more than a real pages count according to all items - return last awailable page.",
+        "description": "received list of favorite recipes is an array. With fixed pagination - 4 items per page. If page not setted - return first page. If page in query setted more than a real pages count according to all items - return last awailable page.",
         "security": [
           {
             "bearerAuth": []
