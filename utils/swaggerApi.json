@@ -711,6 +711,16 @@
               "example": "pot"
             },
             "required": true
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "schema": {
+              "type": "string",
+              "example": "title"
+            },
+            "required": true,
+            "description": "one of the next values - 'title' OR 'ingredients'"
           }
         ],
         "responses": {
