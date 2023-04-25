@@ -31,8 +31,8 @@ const getFavoriteController = catchAsyncWrapper(async (req, res) => {
 
   const paginationData = await favoritesPagination(userId, page);
 
-  const { totalFavorites, currentPage, skip } = paginationData;
-  const limit = 4;
+  const { totalFavorites, currentPage, skip, limit } = paginationData;
+
   const returnedPage = Number(currentPage)
 
   const favoriteRecipes = await getFavorites(favorites, skip, limit);

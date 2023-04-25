@@ -5,11 +5,16 @@ const favoritesPagination = async (userId, page) => {
 
   const totalFavorites = favorites.favorites.length;
 
-  const limit = 4;
-  const lastPage = Math.ceil(totalFavorites / limit);
-  const currentPage = page > lastPage ? lastPage : page;
+  let limit = 0;
+  let currentPage = 0;
+  if (page > 0) {
+    limit = 4;
+    const lastPage = Math.ceil(totalFavorites / limit);
+    currentPage = page > lastPage ? lastPage : page;
+  }
 
   let skip = 0;
+
   if (currentPage > 1) {
     skip = (currentPage - 1) * limit;
   }
@@ -17,7 +22,8 @@ const favoritesPagination = async (userId, page) => {
   const pagination = {
     totalFavorites,
     currentPage,
-    skip
+    skip,
+    limit,
   };
 
   return pagination;
