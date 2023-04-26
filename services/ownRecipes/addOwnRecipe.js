@@ -14,34 +14,24 @@ cloudinary.config({
 const unlink = util.promisify(fs.unlink);
 
 const addOwnRecipe = async (userData, file, _id) => {
-  try {
-    console.log('~CL: ~ file: addOwnRecipe.js START '); // TODO: delete
-    //   const { image, ...rest } = userData;
-    const filePath = `/tmp/${Date.now()}-${file.originalname}`;
-    const writeFileAsync = util.promisify(fs.writeFile);
-    const buffer = Buffer.from(file.buffer);
-    await writeFileAsync(filePath, buffer);
-    console.log('~CL: ~ file: addOwnRecipe.js before uploadedImage '); // TODO: delete
-    const uploadedImage = await cloudinary.uploader.upload(filePath, {
-      folder: 'recipes',
-    });
-    console.log(
-      'CL: ~ file: addOwnRecipe.js:26 ~ uploadedImage:',
-      uploadedImage
-    ); // TODO: delete
+  //   const { image, ...rest } = userData;
+  const filePath = `/tmp/${Date.now()}-${file.originalname}`;
+  const writeFileAsync = util.promisify(fs.writeFile);
+  const buffer = Buffer.from(file.buffer);
+  await writeFileAsync(filePath, buffer);
 
-    await unlink(filePath);
+  const uploadedImage = await cloudinary.uploader.upload(filePath, {
+    folder: 'recipes',
+  });
 
-    const newRecipe = await Recipes.create({
-      ...userData,
-      thumb: uploadedImage.secure_url,
-      owner: _id,
-    });
-    console.log('CL: ~ file: addOwnRecipe.js:35 ~ newRecipe:', newRecipe); // TODO: delete
-    return newRecipe;
-  } catch (err) {
-    console.log('~err addOwnRecipe.js [40]:', err);
-  }
+  await unlink(filePath);
+
+  const newRecipe = await Recipes.create({
+    ...userData,
+    thumb: uploadedImage.secure_url,
+    owner: _id,
+  });
+  return newRecipe;
 };
 
 module.exports = addOwnRecipe;
