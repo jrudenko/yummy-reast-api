@@ -14,12 +14,13 @@ cloudinary.config({
 const unlink = util.promisify(fs.unlink);
 
 const addOwnRecipe = async (userData, file, _id) => {
+  console.log('~CL: ~ file: addOwnRecipe.js START '); // TODO: delete
   //   const { image, ...rest } = userData;
   const filePath = `/tmp/${Date.now()}-${file.originalname}`;
   const writeFileAsync = util.promisify(fs.writeFile);
   const buffer = Buffer.from(file.buffer);
   await writeFileAsync(filePath, buffer);
-
+  console.log('~CL: ~ file: addOwnRecipe.js before uploadedImage '); // TODO: delete
   const uploadedImage = await cloudinary.uploader.upload(filePath, {
     folder: 'recipes',
   });
