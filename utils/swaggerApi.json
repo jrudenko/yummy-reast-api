@@ -978,11 +978,11 @@
     },
     "/api/ownRecipes/{id}": {
       "delete": {
-        "summary": "Get an own recipe by id",
+        "summary": "Delete own recipe",
         "tags": [
           "Own Receipes"
         ],
-        "description": "received an array of strings",
+        "description": "delete own recipe",
         "security": [
           {
             "bearerAuth": []
@@ -1159,7 +1159,7 @@
         "tags": [
           "Favorite"
         ],
-        "description": "received list is an array",
+        "description": "delete recipe from favorites",
         "security": [
           {
             "bearerAuth": []
