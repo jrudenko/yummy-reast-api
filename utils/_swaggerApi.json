@@ -385,6 +385,14 @@
                     "subscribed": {
                       "type": "string",
                       "example": "email@email.com"
+                    },
+                    "OR": {
+                      "type": "string",
+                      "example": ":"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "already done"
                     }
                   }
                 }
@@ -711,6 +719,16 @@
               "example": "pot"
             },
             "required": true
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "schema": {
+              "type": "string",
+              "example": "title"
+            },
+            "required": true,
+            "description": "one of the next values - 'title' OR 'ingredients'"
           }
         ],
         "responses": {
@@ -1026,7 +1044,7 @@
         "tags": [
           "Favorite"
         ],
-        "description": "received list of favorite recipes is an array. With fixed pagination - 4 items per page. If page not setted - return first page. If page in query setted more than a real pages count according to all items - return last awailable page.",
+        "description": "received list of favorite recipes is an array. With fixed pagination - 4 items per page. If page = 0 - return all data without pagination. If page in query setted more than a real pages count according to all items - return last awailable page.",
         "security": [
           {
             "bearerAuth": []
