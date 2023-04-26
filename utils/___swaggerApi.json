@@ -385,14 +385,6 @@
                     "subscribed": {
                       "type": "string",
                       "example": "email@email.com"
-                    },
-                    "OR": {
-                      "type": "string",
-                      "example": ":"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "already done"
                     }
                   }
                 }
