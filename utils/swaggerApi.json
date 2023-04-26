@@ -1146,6 +1146,9 @@
                 }
               }
             }
+          },
+          "204": {
+            "description": "when receipe is already in favorites"
           }
         }
       }
@@ -1167,7 +1170,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "user id",
+            "description": "recipe id",
             "schema": {
               "type": "string",
               "example": "640cd5ac2d9fecf12e8897ef"
@@ -1176,7 +1179,7 @@
         ],
         "responses": {
           "204": {
-            "description": "when search has no result"
+            "description": "answer without message"
           }
         }
       }

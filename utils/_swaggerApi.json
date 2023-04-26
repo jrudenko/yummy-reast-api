@@ -122,6 +122,14 @@
                     "user": {
                       "type": "object",
                       "properties": {
+                        "_id": {
+                          "type": "string",
+                          "example": "6447cc60c566b0c28c8a3551"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "JimmyTest000q"
+                        },
                         "email": {
                           "type": "string",
                           "example": "example@example.com"
@@ -1223,7 +1231,6 @@
                 "$ref": "#/components/schemas/User"
               },
               "example": {
-                "id": "005c2dd963a319ea671e368c",
                 "iid": "640c2dd963a319ea671e368c",
                 "ttl": "Challots",
                 "thb": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564674/ovlvnvcuzttiplnzewm3.png",
@@ -1245,7 +1252,7 @@
                       "items": {
                         "type": "object",
                         "example": {
-                          "id": "005c2dd963a319ea671e368c",
+                          "id": "49220f50-d839-41f9-9e78-79337211a540",
                           "iid": "640c2dd963a319ea671e368c",
                           "ttl": "Challots",
                           "thb": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564674/ovlvnvcuzttiplnzewm3.png",
