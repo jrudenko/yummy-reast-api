@@ -6,10 +6,10 @@ const { User } = require('../../db/usersModel');
 
 const { JWT_SECRET } = process.env;
 
-// const login = async (req, res) => {
 const login = async (email, password) => {
-  // const { email, password } = req.body;
-  const user = await User.findOne({ email }).select('+password');
+  const user = await User.findOne({
+    email: { $regex: new RegExp(email, 'i') },
+  }).select('+password');
   if (!user) {
     throw new Unauthorized(
       'Email is wrong or not verify, or password is wrong'
