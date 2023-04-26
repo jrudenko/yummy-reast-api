@@ -1,4 +1,7 @@
 const customErrorMessage = (message) => {
+  if (!message) {
+    return { status: 500, message: 'internal error' };
+  }
   if (message.startsWith('E11000') && message.includes('dup key: { name')) {
     return { status: 409, message: 'name already used' };
   }
@@ -8,7 +11,7 @@ const customErrorMessage = (message) => {
   if (message === 'invalid token') {
     return { status: 401, message: 'not authorized' };
   }
-  return { status: 500, message: 'internal error' };
+  return { status: 500, message };
 };
 
 module.exports = customErrorMessage;
