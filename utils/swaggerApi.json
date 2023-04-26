@@ -947,7 +947,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Own reccipes",
             "content": {
               "application/json": {
