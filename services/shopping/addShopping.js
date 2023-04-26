@@ -1,10 +1,15 @@
+const { v4: uuid } = require('uuid');
 const { User } = require('../../db/usersModel');
 
 const addShopping = async (userId, shoppingItem) => {
+  const id = uuid();
+
+  const addToShopping = { id, ...shoppingItem };
+
   const addRequestResult = await User.findByIdAndUpdate(
     userId,
     {
-      $push: { shopping: shoppingItem },
+      $push: { shopping: addToShopping },
     },
     {
       new: true,
@@ -12,6 +17,7 @@ const addShopping = async (userId, shoppingItem) => {
   );
 
   return addRequestResult;
+  
 };
 
 module.exports = { addShopping };

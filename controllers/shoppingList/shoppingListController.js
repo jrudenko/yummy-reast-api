@@ -7,8 +7,8 @@ const { catchAsyncWrapper } = require('../../utils');
 
 const addToShoppingListController = catchAsyncWrapper(async (req, res) => {
   const { _id: userId } = req.user;
-  const { id, iid, ttl, thb, number } = req.body;
-  const shoppingItem = { id, iid, ttl, thb, number };
+  const { iid, ttl, thb, number } = req.body;
+  const shoppingItem = { iid, ttl, thb, number };
 
   const response = await addShopping(userId, shoppingItem);
   const shoppingList = response.shopping;
