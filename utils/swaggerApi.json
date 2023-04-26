@@ -927,11 +927,11 @@
     },
     "/api/ownRecipes/": {
       "post": {
-        "summary": "NOT WORK Get an own recipe by id",
+        "summary": "add own recipe",
         "tags": [
           "Own Receipes"
         ],
-        "description": "received an array of strings",
+        "description": "add own recipe to personal collection",
         "security": [
           {
             "bearerAuth": []
