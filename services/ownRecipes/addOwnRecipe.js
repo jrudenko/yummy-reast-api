@@ -23,6 +23,7 @@ const addOwnRecipe = async (userData, file, _id) => {
   const uploadedImage = await cloudinary.uploader.upload(filePath, {
     folder: 'recipes',
   });
+  console.log('CL: ~ file: addOwnRecipe.js:26 ~ uploadedImage:', uploadedImage); // TODO: delete
 
   await unlink(filePath);
 
@@ -31,6 +32,7 @@ const addOwnRecipe = async (userData, file, _id) => {
     thumb: uploadedImage.secure_url,
     owner: _id,
   });
+  console.log('CL: ~ file: addOwnRecipe.js:35 ~ newRecipe:', newRecipe); // TODO: delete
   return newRecipe;
 };
 

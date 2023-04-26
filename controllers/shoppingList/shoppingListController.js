@@ -32,10 +32,10 @@ const getShoppingListController = catchAsyncWrapper(async (req, res) => {
 });
 
 const deleteFromShoppingListController = catchAsyncWrapper(async (req, res) => {
-  const { id: idToDelete } = req.params;
+  const { iid: idToDelete, number } = req.params;
   const { _id: userId } = req.user;
 
-  const result = await deleteFromShopping(userId, idToDelete);
+  const result = await deleteFromShopping(userId, idToDelete, number);
   if (result.modifiedCount > 0) {
     return res.status(204).json();
   }

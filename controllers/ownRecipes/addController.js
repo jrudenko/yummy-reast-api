@@ -12,6 +12,7 @@ const addController = catchAsyncWrapper(async (req, res) => {
   const file = req.file.buffer;
 
   const newRecipe = await ownRecipes.addOwnRecipe(userData, file, _id);
+  console.log('CL: ~ file: addController.js:15 ~ newRecipe:', newRecipe);// TODO: delete
   res.status(201).json({
     status: 'success',
     code: 201,
