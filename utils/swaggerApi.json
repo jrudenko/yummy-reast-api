@@ -122,6 +122,14 @@
                     "user": {
                       "type": "object",
                       "properties": {
+                        "_id": {
+                          "type": "string",
+                          "example": "6447cc60c566b0c28c8a3551"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "JimmyTest000q"
+                        },
                         "email": {
                           "type": "string",
                           "example": "example@example.com"
