@@ -7,7 +7,7 @@ const recipesSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
+      // required: true,
       unique: true,
     },
     category: {
@@ -28,7 +28,7 @@ const recipesSchema = new Schema(
         'Starter',
         'Vegan',
       ],
-      required: true,
+      // required: true,
       unique: true,
     },
     area: {
@@ -36,11 +36,11 @@ const recipesSchema = new Schema(
     },
     instructios: {
       type: String,
-      required: true,
+      // required: true,
     },
     description: {
       type: String,
-      required: true,
+      // required: true,
     },
     thumb: {
       type: String,
@@ -53,7 +53,7 @@ const recipesSchema = new Schema(
     },
     time: {
       type: Number,
-      required: true,
+      // required: true,
     },
     youtube: {
       type: String,
@@ -64,12 +64,12 @@ const recipesSchema = new Schema(
     },
     ingredients: {
       type: Array,
-      required: true,
+      // required: true,
     },
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'user',
-      required: true,
+      // required: true,
     },
   },
   { versionKey: false, timestamps: true }

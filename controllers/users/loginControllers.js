@@ -9,12 +9,14 @@ const loginController = catchAsyncWrapper(async (req, res) => {
 
   const loginnedUser = await users.login(email, password);
 
-  const { token } = loginnedUser;
+  const { token, _id, name } = loginnedUser;
 
   res.json({
     status: 'success',
     code: 200,
     user: {
+      _id,
+      name,
       email,
       token,
     },
