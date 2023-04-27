@@ -55,10 +55,6 @@
                         "email": {
                           "type": "string",
                           "example": "example@example.com"
-                        },
-                        "avatar": {
-                          "type": "string",
-                          "example": "http://www.gravatar.com/avatar/0c308af859002f66858ebc205cce9825?s=100"
                         }
                       }
                     }
@@ -137,10 +133,6 @@
                         "email": {
                           "type": "string",
                           "example": "example@example.com"
-                        },
-                        "avatar": {
-                          "type": "string",
-                          "example": "http://www.gravatar.com/avatar/0c308af859002f66858ebc205cce9825?s=100"
                         },
                         "token": {
                           "type": "string",
