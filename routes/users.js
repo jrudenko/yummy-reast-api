@@ -12,7 +12,7 @@ router.post('/login', loginUserValidate, ctrl.loginController);
 
 router.get('/current', auth, ctrl.getCurrent);
 
-router.put('/:userId', auth, ctrl.updateByIdControllers);
+router.put('/', auth, upload.single('avatar'), ctrl.updateByIdControllers);
 
 router.get('/logout', auth, ctrl.logout);
 
