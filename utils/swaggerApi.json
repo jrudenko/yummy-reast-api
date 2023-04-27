@@ -418,6 +418,61 @@
         }
       }
     },
+    "/api/auth/avatar": {
+      "post": {
+        "summary": "Upload Avatar",
+        "tags": [
+          "Avatar"
+        ],
+        "description": "description",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "subscribed": {
+                      "type": "string",
+                      "example": "email@email.com"
+                    },
+                    "OR": {
+                      "type": "string",
+                      "example": ":"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "already done"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/recipes/category-list": {
       "get": {
         "summary": "Get a list of recipes categories",
