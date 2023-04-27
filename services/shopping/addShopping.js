@@ -1,23 +1,21 @@
 const { v4: uuid } = require('uuid');
-const { User } = require('../../db/usersModel');
+const { Shopping } = require('../../db/shoppingModel');
 
-const addShopping = async (userId, shoppingItem) => {
+const addShopping = async (owner, shoppingItem) => {
   const id = uuid();
 
-  const addToShopping = { id, ...shoppingItem };
+  const { iid, ttl, thb, number } = shoppingItem;
 
-  const addRequestResult = await User.findByIdAndUpdate(
-    userId,
-    {
-      $push: { shopping: addToShopping },
-    },
-    {
-      new: true,
-    }
-  );
+  const addRequestResult = await Shopping.create({
+    id,
+    iid,
+    ttl,
+    thb,
+    number,
+    owner,
+  });
 
   return addRequestResult;
-  
 };
 
 module.exports = { addShopping };

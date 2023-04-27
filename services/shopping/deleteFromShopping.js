@@ -1,15 +1,9 @@
-const { User } = require('../../db/usersModel');
+const { Shopping } = require('../../db/shoppingModel');
 
-const deleteFromShopping = async (userId, idToDelete) => {
-  const deleteResult = await User.updateOne(
-    { _id: userId },
-    {
-      $pull: { shopping: {id: idToDelete} },
-    },
-    {
-      new: true,
-    }
-  );
+const deleteFromShopping = async (owner, iid, number) => {
+  const deleteResult = await Shopping.findOneAndDelete({
+    owner, iid, number
+  });
 
   return deleteResult;
 };
