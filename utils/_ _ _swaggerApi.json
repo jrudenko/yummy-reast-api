@@ -256,7 +256,7 @@
         }
       }
     },
-    "/api/auth/{id}": {
+    "/api/auth": {
       "put": {
         "summary": "Update existed user",
         "tags": [
@@ -268,22 +268,9 @@
             "bearerAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "user id",
-            "schema": {
-              "type": "string",
-              "example": "6435681c54d50f705952fa96"
-            }
-          }
-        ],
         "requestBody": {
-          "required": true,
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "$ref": "#/components/schemas/User"
               },
@@ -1400,29 +1387,16 @@
       "User": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "required": [
-              "true",
-              "user id is required"
-            ]
-          },
           "name": {
             "type": "string",
             "required": [
-              "true",
+              "false",
               "Set name of user"
             ]
           },
-          "email": {
+          "avatar": {
             "type": "string",
-            "required": [
-              "true",
-              "Set email of user"
-            ]
-          },
-          "token": {
-            "type": "string"
+            "format": "binary"
           }
         }
       },

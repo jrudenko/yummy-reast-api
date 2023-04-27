@@ -1,10 +1,10 @@
 const bcrypt = require('bcrypt');
-require('dotenv').config();
 const gravatar = require('gravatar');
+const jwt = require('jsonwebtoken');
 const { User } = require('../../db/usersModel');
-// const jwt = require('jsonwebtoken');
-// const { v4: uuidv4 } = require('uuid');
-// const { JWT_SECRET } = process.env;
+require('dotenv').config();
+
+const { JWT_SECRET } = process.env;
 
 // TODO: error catch wrapper?
 
@@ -20,19 +20,34 @@ const takeGravatar = async (email) => {
 const registerUserService = async ({ name, email, password }) => {
   const encryptedPassword = await bcrypt.hash(password, 10);
 
-  const avatar = await takeGravatar(email)
+  const avatar = await takeGravatar(email);
 
-  const createdUser = User.create({
+  const createdUser = await User.create({
     name,
     email,
     password: encryptedPassword,
     avatar,
   });
 
-  return createdUser;
+  const payload = {
+    id: createdUser._id,
+  };
+
+  const token = jwt.sign(payload, JWT_SECRET);
+  const id = createdUser._id;
+
+  const updatedUser = await User.findByIdAndUpdate(
+    id,
+    { token },
+    {
+      new: true,
+    }
+  );
+
+  return updatedUser;
 };
 
-const verifyUserService = async verificationToken => {
+const verifyUserService = async (verificationToken) => {
   try {
     const searchTokenResult = await User.findOne({
       verificationToken,

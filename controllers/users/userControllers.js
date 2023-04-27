@@ -10,12 +10,15 @@ const createUserController = catchAsyncWrapper(async (req, res) => {
   const userData = req.body;
   const createdUser = await users.registerUserService(userData);
 
+  const { _id: id, name, email, avatar, token } = createdUser;
+
   res.status(201).json({
     user: {
-      id: `${createdUser._id}`,
-      name: `${createdUser.name}`,
-      email: `${createdUser.email}`,
-      avatar: `${createdUser.avatar}`,
+      id,
+      name,
+      email,
+      avatar,
+      token,
     },
   });
 });
