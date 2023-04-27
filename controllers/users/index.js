@@ -3,6 +3,7 @@ const loginController = require('./loginControllers');
 const updateByIdControllers = require('./updateByIdControllers');
 const logout = require('./logout');
 const getCurrent = require('./getCurrent');
+const uploadAvatarController = require('./uploadAvatarController');
 
 module.exports = {
   createUserController,
@@ -10,4 +11,5 @@ module.exports = {
   updateByIdControllers,
   logout,
   getCurrent,
+  uploadAvatarController,
 };

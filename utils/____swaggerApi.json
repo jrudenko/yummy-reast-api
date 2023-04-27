@@ -55,6 +55,10 @@
                         "email": {
                           "type": "string",
                           "example": "example@example.com"
+                        },
+                        "avatar": {
+                          "type": "string",
+                          "example": "http://www.gravatar.com/avatar/0c308af859002f66858ebc205cce9825?s=100"
                         }
                       }
                     }
@@ -133,6 +137,10 @@
                         "email": {
                           "type": "string",
                           "example": "example@example.com"
+                        },
+                        "avatar": {
+                          "type": "string",
+                          "example": "http://www.gravatar.com/avatar/0c308af859002f66858ebc205cce9825?s=100"
                         },
                         "token": {
                           "type": "string",
@@ -927,11 +935,11 @@
     },
     "/api/ownRecipes/": {
       "post": {
-        "summary": "NOT WORK Get an own recipe by id",
+        "summary": "add own recipe",
         "tags": [
           "Own Receipes"
         ],
-        "description": "received an array of strings",
+        "description": "add own recipe to personal collection",
         "security": [
           {
             "bearerAuth": []
@@ -947,7 +955,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Own reccipes",
             "content": {
               "application/json": {
@@ -978,11 +986,11 @@
     },
     "/api/ownRecipes/{id}": {
       "delete": {
-        "summary": "Get an own recipe by id",
+        "summary": "Delete own recipe",
         "tags": [
           "Own Receipes"
         ],
-        "description": "received an array of strings",
+        "description": "delete own recipe",
         "security": [
           {
             "bearerAuth": []
@@ -1146,6 +1154,9 @@
                 }
               }
             }
+          },
+          "204": {
+            "description": "when receipe is already in favorites"
           }
         }
       }
@@ -1156,7 +1167,7 @@
         "tags": [
           "Favorite"
         ],
-        "description": "received list is an array",
+        "description": "delete recipe from favorites",
         "security": [
           {
             "bearerAuth": []
@@ -1167,7 +1178,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "user id",
+            "description": "recipe id",
             "schema": {
               "type": "string",
               "example": "640cd5ac2d9fecf12e8897ef"
@@ -1176,7 +1187,7 @@
         ],
         "responses": {
           "204": {
-            "description": "when search has no result"
+            "description": "answer without message"
           }
         }
       }
@@ -1203,7 +1214,17 @@
                     "shoppingList": {
                       "type": "array",
                       "items": {
-                        "type": "object"
+                        "type": "object",
+                        "example": {
+                          "iid": "640c2dd963a319ea671e368c",
+                          "ttl": "Challots",
+                          "thb": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564674/ovlvnvcuzttiplnzewm3.png",
+                          "number": "400 g",
+                          "owner": "643dab0682ade3006f67ecae",
+                          "_id": "644a189c1d1bb1542a10cadc",
+                          "createdAt": "2023-04-27T06:39:24.508Z",
+                          "updatedAt": "2023-04-27T06:39:24.508Z"
+                        }
                       }
                     }
                   }
@@ -1241,7 +1262,7 @@
         },
         "responses": {
           "201": {
-            "description": "Array of recipes when search result is no empty",
+            "description": "Added receipe object. iid - recipe id, _id - uniquie id of document",
             "content": {
               "application/json": {
                 "schema": {
@@ -1252,11 +1273,14 @@
                       "items": {
                         "type": "object",
                         "example": {
-                          "id": "49220f50-d839-41f9-9e78-79337211a540",
                           "iid": "640c2dd963a319ea671e368c",
                           "ttl": "Challots",
                           "thb": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564674/ovlvnvcuzttiplnzewm3.png",
-                          "number": "400 g"
+                          "number": "400 g",
+                          "owner": "643dab0682ade3006f67ecae",
+                          "_id": "644a189c1d1bb1542a10cadc",
+                          "createdAt": "2023-04-27T06:39:24.508Z",
+                          "updatedAt": "2023-04-27T06:39:24.508Z"
                         }
                       }
                     }
@@ -1266,32 +1290,32 @@
             }
           }
         }
-      }
-    },
-    "/api/shopping-list/{id}": {
-      "delete": {
-        "summary": "Delete ingredient from shopping list",
+      },
+      "patch": {
+        "summary": "Delete ingredient",
         "tags": [
           "Shopping list"
         ],
-        "description": "received list is an array",
+        "description": "Delete ingredient from shopping list",
         "security": [
           {
             "bearerAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "id record to delete",
-            "schema": {
-              "type": "string",
-              "example": "640cd5ac2d9fecf12e8897ef"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "iid": "640c2dd963a319ea671e368c",
+                "number": "400 g"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "204": {
             "description": "when delete was successful"

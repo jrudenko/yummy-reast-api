@@ -2,7 +2,7 @@ const express = require('express');
 const { users: ctrl } = require('../controllers');
 
 const { createUserValidate, loginUserValidate } = require('../middlewares');
-const { auth } = require('../middlewares');
+const { auth, upload } = require('../middlewares');
 
 const router = express.Router();
 
@@ -15,5 +15,12 @@ router.get('/current', auth, ctrl.getCurrent);
 router.put('/:userId', auth, ctrl.updateByIdControllers);
 
 router.get('/logout', auth, ctrl.logout);
+
+router.post(
+  '/avatar',
+  auth,
+  upload.single('avatar'),
+  ctrl.uploadAvatarController
+);
 
 module.exports = router;
