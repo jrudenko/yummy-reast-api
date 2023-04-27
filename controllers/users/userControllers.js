@@ -14,7 +14,7 @@ const createUserController = catchAsyncWrapper(async (req, res) => {
     user: {
       name: `${createdUser.name}`,
       email: `${createdUser.email}`,
-      subscription: `${createdUser.subscription}`,
+      avatar: `${createdUser.avatar}`,
     },
   });
 });
