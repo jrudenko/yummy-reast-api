@@ -31,7 +31,7 @@ const uploadAvatar = async (file, _id) => {
   });
   const avatar = uploadedAvatar.secure_url;
 
-  await fs.unlink(filePath);
+  // await fs.unlink(filePath);// TODO: FIX IT
 
   const updatedUser = await User.findByIdAndUpdate(
     _id,
