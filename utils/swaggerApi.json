@@ -59,6 +59,10 @@
                         "avatar": {
                           "type": "string",
                           "example": "http://www.gravatar.com/avatar/0c308af859002f66858ebc205cce9825?s=100"
+                        },
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGeiO6JIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTY2ODYzNywiZXhwIjoxNjgxRjc1ODM3fQ.U2MKPZbgFvq_ASqX79dZBxOA7AbUncCQeH9M8ffohps"
                         }
                       }
                     }
