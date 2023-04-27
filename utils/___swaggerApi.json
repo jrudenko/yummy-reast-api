@@ -1214,17 +1214,7 @@
                     "shoppingList": {
                       "type": "array",
                       "items": {
-                        "type": "object",
-                        "example": {
-                          "iid": "640c2dd963a319ea671e368c",
-                          "ttl": "Challots",
-                          "thb": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564674/ovlvnvcuzttiplnzewm3.png",
-                          "number": "400 g",
-                          "owner": "643dab0682ade3006f67ecae",
-                          "_id": "644a189c1d1bb1542a10cadc",
-                          "createdAt": "2023-04-27T06:39:24.508Z",
-                          "updatedAt": "2023-04-27T06:39:24.508Z"
-                        }
+                        "type": "object"
                       }
                     }
                   }
@@ -1262,7 +1252,7 @@
         },
         "responses": {
           "201": {
-            "description": "Added receipe object. iid - recipe id, _id - uniquie id of document",
+            "description": "Array of recipes when search result is no empty",
             "content": {
               "application/json": {
                 "schema": {
@@ -1273,14 +1263,11 @@
                       "items": {
                         "type": "object",
                         "example": {
+                          "id": "49220f50-d839-41f9-9e78-79337211a540",
                           "iid": "640c2dd963a319ea671e368c",
                           "ttl": "Challots",
                           "thb": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564674/ovlvnvcuzttiplnzewm3.png",
-                          "number": "400 g",
-                          "owner": "643dab0682ade3006f67ecae",
-                          "_id": "644a189c1d1bb1542a10cadc",
-                          "createdAt": "2023-04-27T06:39:24.508Z",
-                          "updatedAt": "2023-04-27T06:39:24.508Z"
+                          "number": "400 g"
                         }
                       }
                     }
@@ -1290,32 +1277,32 @@
             }
           }
         }
-      },
-      "patch": {
-        "summary": "Delete ingredient",
+      }
+    },
+    "/api/shopping-list/{id}": {
+      "delete": {
+        "summary": "Delete ingredient from shopping list",
         "tags": [
           "Shopping list"
         ],
-        "description": "Delete ingredient from shopping list",
+        "description": "received list is an array",
         "security": [
           {
             "bearerAuth": []
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
-              },
-              "example": {
-                "iid": "640c2dd963a319ea671e368c",
-                "number": "400 g"
-              }
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "id record to delete",
+            "schema": {
+              "type": "string",
+              "example": "640cd5ac2d9fecf12e8897ef"
             }
           }
-        },
+        ],
         "responses": {
           "204": {
             "description": "when delete was successful"

@@ -6,12 +6,11 @@ const {
 const { catchAsyncWrapper } = require('../../utils');
 
 const addToShoppingListController = catchAsyncWrapper(async (req, res) => {
-  const { _id: userId } = req.user;
+  const { _id: owner } = req.user;
   const { iid, ttl, thb, number } = req.body;
   const shoppingItem = { iid, ttl, thb, number };
 
-  const response = await addShopping(userId, shoppingItem);
-  const shoppingList = response.shopping;
+  const shoppingList = await addShopping(owner, shoppingItem);
 
   res.status(201).json({
     shoppingList,
@@ -19,12 +18,11 @@ const addToShoppingListController = catchAsyncWrapper(async (req, res) => {
 });
 
 const getShoppingListController = catchAsyncWrapper(async (req, res) => {
-  const { _id: userId } = req.user;
+  const { _id: owner } = req.user;
 
   const { shopping } = req.user;
 
-  const response = await getShopping(userId);
-  const shoppingList = response.shopping;
+  const shoppingList = await getShopping(owner);
 
   res.json({
     shoppingList,
@@ -32,17 +30,18 @@ const getShoppingListController = catchAsyncWrapper(async (req, res) => {
 });
 
 const deleteFromShoppingListController = catchAsyncWrapper(async (req, res) => {
-  const { iid: idToDelete, number } = req.params;
-  const { _id: userId } = req.user;
+  const { iid, number } = req.body;
+  const { _id: owner } = req.user;
 
-  const result = await deleteFromShopping(userId, idToDelete, number);
-  if (result.modifiedCount > 0) {
-    return res.status(204).json();
+  const result = await deleteFromShopping(owner, iid, number);
+
+  if (!result) {
+    return res.status(404).json({
+      message: 'nothing to delete',
+    });
   }
 
-  res.status(404).json({
-    message: 'nothing to delete',
-  });
+  return res.status(204).json();
 });
 
 module.exports = {

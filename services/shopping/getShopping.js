@@ -1,13 +1,9 @@
-const { User } = require('../../db/usersModel');
+const { Shopping } = require('../../db/shoppingModel');
 
-const getShopping = async (userId) => {
-  const result = await User.findById(
-    userId,
-    'shopping',
-    {
-      new: true,
-    }
-  );
+const getShopping = async (owner) => {
+  const result = await Shopping.find({
+    owner,
+  });
 
   return result;
 };

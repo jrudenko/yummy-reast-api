@@ -10,7 +10,7 @@ const { User } = require('../../db/usersModel');
 
 const takeGravatar = async (email) => {
   try {
-    return await gravatar.url(email, { protocol: 'http', s: '100' });
+    return await gravatar.url(email, { protocol: 'http', s: '103' });
   } catch (err) {
     console.log(err.message);
     return '';
