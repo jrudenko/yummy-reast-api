@@ -338,7 +338,7 @@
       }
     },
     "/api/auth/logout": {
-      "get": {
+      "post": {
         "summary": "Update existed user",
         "tags": [
           "Auth"
