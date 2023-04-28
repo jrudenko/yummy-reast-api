@@ -1336,7 +1336,7 @@
             }
           },
           "404": {
-            "description": "if shopping list has no ingregient with given id",
+            "description": "if ingredients list has no ingredient with given id",
             "content": {
               "application/json": {
                 "schema": {
