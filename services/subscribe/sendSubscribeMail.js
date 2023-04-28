@@ -15,9 +15,11 @@ const sendMail = async email => {
   try {
     await sgMail.send(msg);
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
 
     if (error.response) {
+      // eslint-disable-next-line no-console
       console.error(error.response.body);
     }
   }

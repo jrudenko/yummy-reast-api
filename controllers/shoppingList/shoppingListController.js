@@ -11,7 +11,6 @@ const addToShoppingListController = catchAsyncWrapper(async (req, res) => {
   const shoppingItem = { iid, number };
 
   const shoppingList = await addShopping(owner, shoppingItem);
-  console.log('CL: ~ file: shoppingListController.js:14 ~ shoppingList:', shoppingList);
 
   if (!shoppingList) {
     return res.status(404).json({
@@ -26,8 +25,6 @@ const addToShoppingListController = catchAsyncWrapper(async (req, res) => {
 
 const getShoppingListController = catchAsyncWrapper(async (req, res) => {
   const { _id: owner } = req.user;
-
-  const { shopping } = req.user;
 
   const shoppingList = await getShopping(owner);
 

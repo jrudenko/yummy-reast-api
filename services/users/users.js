@@ -10,6 +10,7 @@ const takeGravatar = async (email) => {
   try {
     return await gravatar.url(email, { protocol: 'http', s: '103' });
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.log(err.message);
     return '';
   }
