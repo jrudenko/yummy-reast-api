@@ -1334,6 +1334,22 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "if shopping list has no ingregient with given id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "there no ingredient with this id"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },

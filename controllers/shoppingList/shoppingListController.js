@@ -12,6 +12,12 @@ const addToShoppingListController = catchAsyncWrapper(async (req, res) => {
 
   const shoppingList = await addShopping(owner, shoppingItem);
 
+  if (!shoppingList) {
+    return res.status(404).json({
+      message: 'there no ingredient with this id'
+    });
+  }
+
   res.status(201).json({
     shoppingList,
   });

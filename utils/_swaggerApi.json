@@ -59,6 +59,10 @@
                         "avatar": {
                           "type": "string",
                           "example": "http://www.gravatar.com/avatar/0c308af859002f66858ebc205cce9825?s=100"
+                        },
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGeiO6JIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2JiM2ZjZDgxNWZhNzcyYjU2N2M0ZSIsImlhdCI6MTY4MTY2ODYzNywiZXhwIjoxNjgxRjc1ODM3fQ.U2MKPZbgFvq_ASqX79dZBxOA7AbUncCQeH9M8ffohps"
                         }
                       }
                     }
@@ -256,7 +260,7 @@
         }
       }
     },
-    "/api/auth/{id}": {
+    "/api/auth": {
       "put": {
         "summary": "Update existed user",
         "tags": [
@@ -268,22 +272,9 @@
             "bearerAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "user id",
-            "schema": {
-              "type": "string",
-              "example": "6435681c54d50f705952fa96"
-            }
-          }
-        ],
         "requestBody": {
-          "required": true,
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "$ref": "#/components/schemas/User"
               },
@@ -386,6 +377,61 @@
               },
               "example": {
                 "emailToSubscribe": "example@email.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "subscribed": {
+                      "type": "string",
+                      "example": "email@email.com"
+                    },
+                    "OR": {
+                      "type": "string",
+                      "example": ":"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "already done"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/avatar": {
+      "post": {
+        "summary": "Upload Avatar",
+        "tags": [
+          "Avatar"
+        ],
+        "description": "description",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
               }
             }
           }
@@ -1345,29 +1391,16 @@
       "User": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "required": [
-              "true",
-              "user id is required"
-            ]
-          },
           "name": {
             "type": "string",
             "required": [
-              "true",
+              "false",
               "Set name of user"
             ]
           },
-          "email": {
+          "avatar": {
             "type": "string",
-            "required": [
-              "true",
-              "Set email of user"
-            ]
-          },
-          "token": {
-            "type": "string"
+            "format": "binary"
           }
         }
       },
