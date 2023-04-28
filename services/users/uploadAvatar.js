@@ -13,10 +13,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// const unlink = util.promisify(fs.unlink);
-
 const uploadAvatar = async (file, _id) => {
-  //   const { image, ...rest } = userData;
   const filePath = path.resolve(`./tmp/${Date.now()}-${file.originalname}`);
   const writeFileAsync = util.promisify(fs.writeFile);
   const buffer = Buffer.from(file.buffer);
@@ -31,7 +28,7 @@ const uploadAvatar = async (file, _id) => {
   });
   const avatar = uploadedAvatar.secure_url;
 
-  // await fs.unlink(filePath);// TODO: FIX IT
+  await fs.unlink(filePath);
 
   const updatedUser = await User.findByIdAndUpdate(
     _id,
