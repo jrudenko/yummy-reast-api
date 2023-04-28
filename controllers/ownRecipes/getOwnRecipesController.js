@@ -5,7 +5,7 @@ const { ownRecipes } = require('../../services');
 const { catchAsyncWrapper } = require('../../utils');
 
 const getOwnRecipes = catchAsyncWrapper(async (req, res) => {
-  const userId = req.user._id;
+  const userId = req.params;
   const pageNumber = req.query.pageNumber || 1;
   const pageSize = req.query.pageSize || 4;
 
