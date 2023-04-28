@@ -1,6 +1,6 @@
 const getCurrent = (req, res, next) => {
   try {
-    const { email, name, id } = req.user;
+    const { email, name, id, avatar } = req.user;
     res.json({
       status: 'success',
       code: 200,
@@ -9,6 +9,7 @@ const getCurrent = (req, res, next) => {
           id,
           name,
           email,
+          avatar,
         },
       },
     });
