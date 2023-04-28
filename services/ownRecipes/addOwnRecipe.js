@@ -25,10 +25,9 @@ const addOwnRecipe = async (userData, file, _id) => {
   });
 
   await unlink(filePath);
-
   const newRecipe = await Recipes.create({
     ...userData,
-    thumb: uploadedImage.secure_url,
+    preview: uploadedImage.secure_url,
     owner: _id,
   });
   return newRecipe;

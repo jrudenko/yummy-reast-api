@@ -28,7 +28,7 @@ const recipesSchema = new Schema(
         'Starter',
         'Vegan',
       ],
-      required: true,
+      // required: true,
       unique: true,
     },
     area: {
