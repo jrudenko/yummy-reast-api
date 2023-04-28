@@ -7,6 +7,8 @@ const path = require('path');
 const cloudinary = require('cloudinary').v2;
 const { User } = require('../../db/usersModel');
 
+const unlink = util.promisify(fs.unlink);
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -31,13 +33,14 @@ const updateById = async (userId, file, { name }) => {
         folder: 'avatars',
       });
 
+      await unlink(filePath);
+
       return uploadedAvatar.secure_url;
     }
     return null;
   };
 
   const avatar = await getAvatar();
-  // console.log('CL: ~ file: updateById.js:40 ~ avatar:', avatar);
 
   if (name && avatar) {
     result = await User.findByIdAndUpdate(

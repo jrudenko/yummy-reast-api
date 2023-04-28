@@ -1,4 +1,3 @@
-const { v4: uuid } = require('uuid');
 const { Shopping } = require('../../db/shoppingModel');
 const { Ingredients } = require('../../db/ingredientsModel');
 
