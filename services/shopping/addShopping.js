@@ -1,26 +1,27 @@
 const { v4: uuid } = require('uuid');
 const { Shopping } = require('../../db/shoppingModel');
-const {Ingredients} = require('../../db/ingredientsModel')
+const { Ingredients } = require('../../db/ingredientsModel');
 
 const addShopping = async (owner, shoppingItem) => {
-  const id = uuid();
+  // const id = uuid();
 
-  const { iid, ttl, thb, number } = shoppingItem;
+  const { iid, number } = shoppingItem;
 
-  const isIdInIngredients = await Ingredients.findById(iid)
+  const isIdInIngredients = await Ingredients.findById(iid);
 
   if (!isIdInIngredients) {
-    return null
+    return null;
   }
-
-  const addRequestResult = await Shopping.create({
-    id,
+  const { ttl, thb } = isIdInIngredients;
+  const addToShopping = {
     iid,
     ttl,
     thb,
     number,
     owner,
-  });
+  };
+
+  const addRequestResult = await Shopping.create(addToShopping);
 
   return addRequestResult;
 };
