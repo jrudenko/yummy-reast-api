@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.delete('/:recipesId', auth, ctrl.removeController);
 
-router.get('/:userId', auth, ctrl.getOwnRecipes);
+router.get('/', auth, ctrl.getOwnRecipes);
 
 router.post('/', auth, upload.single('preview'), ctrl.addController);
 

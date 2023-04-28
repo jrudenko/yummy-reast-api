@@ -4,7 +4,7 @@ const { Recipes } = require('../../db/recipesModel');
 const getOwnRecipes = async (userId, pageNumber, pageSize) => {
   const skip = (pageNumber - 1) * pageSize;
   const count = await Recipes.countDocuments({ owner: userId });
-  const recipes = await Recipes.findById(userId, { owner: userId })
+  const recipes = await Recipes.findById({ owner: userId })
     .skip(skip)
     .limit(pageSize)
     .lean();
