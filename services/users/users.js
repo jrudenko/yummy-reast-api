@@ -6,8 +6,6 @@ require('dotenv').config();
 
 const { JWT_SECRET } = process.env;
 
-// TODO: error catch wrapper?
-
 const takeGravatar = async (email) => {
   try {
     return await gravatar.url(email, { protocol: 'http', s: '103' });

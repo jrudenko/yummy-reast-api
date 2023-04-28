@@ -1,6 +1,4 @@
-// const path = require('path');
 require('dotenv').config();
-// const { CustomError } = require('../utils');
 
 const { users } = require('../../services');
 
