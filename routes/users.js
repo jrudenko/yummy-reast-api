@@ -14,7 +14,7 @@ router.get('/current', auth, ctrl.getCurrent);
 
 router.put('/', auth, upload.single('avatar'), ctrl.updateByIdControllers);
 
-router.get('/logout', auth, ctrl.logout);
+router.post('/logout', auth, ctrl.logout);
 
 router.post(
   '/avatar',
