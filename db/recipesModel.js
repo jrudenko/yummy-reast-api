@@ -44,11 +44,11 @@ const recipesSchema = new Schema(
     },
     thumb: {
       type: String,
-      required: true,
       match: /^(http|https):\/\/[^ "]+$/, // валидация URL-адреса
     },
     preview: {
       type: String,
+      required: true,
       match: /^(http|https):\/\/[^ "]+$/, // валидация URL-адреса
     },
     time: {
