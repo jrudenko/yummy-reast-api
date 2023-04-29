@@ -20,10 +20,7 @@ const addFavoriteController = catchAsyncWrapper(async (req, res) => {
 
 const getFavoriteController = catchAsyncWrapper(async (req, res) => {
   const { favorites, _id: userId } = req.user;
-  let { page } = req.query;
-  if (!page) {
-    page = 1;
-  }
+  const { page = 1 } = req.query;
 
   if (!favorites) {
     return res.status(204).json();
