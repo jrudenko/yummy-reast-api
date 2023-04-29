@@ -13,6 +13,7 @@ const password = Joi.string().pattern(
 const verificationToken = Joi.string().guid({ version: 'uuidv4' });
 const queryString = Joi.string().min(2).max(20);
 const typeString = Joi.string().valid('title', 'ingredients');
+const number = Joi.number();
 
 module.exports = {
   name,
@@ -21,4 +22,5 @@ module.exports = {
   verificationToken,
   queryString,
   typeString,
+  number,
 };

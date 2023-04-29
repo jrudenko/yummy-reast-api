@@ -10,17 +10,31 @@ const ingredientsListController = catchAsyncWrapper(async (req, res) => {
 });
 // TODO: refactor both in one
 const ingredientsSearchController = catchAsyncWrapper(async (req, res) => {
-  const { query } = req.query;
+  const { query, page = 1, perPage = 6 } = req.query;
 
-  const searchResult = await search.ingredientsSearch(query);
+  const ingredients = true;
+
+  const paginationData = await search.searchPagination(
+    query,
+    page,
+    perPage,
+    ingredients
+  );
+
+  const searchResult = await search.ingredientsSearch(query, paginationData);
 
   if (searchResult.length === 0) {
     return res.status(204).json();
   }
 
+  const { total, currentPage } = paginationData;
+
   res.status(200).json({
+    total,
+    page: currentPage,
+    perPage,
     searchResult,
   });
 });
 
-module.exports = { ingredientsListController,ingredientsSearchController };
+module.exports = { ingredientsListController, ingredientsSearchController };

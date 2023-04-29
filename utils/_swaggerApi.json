@@ -762,11 +762,11 @@
     },
     "/api/search": {
       "get": {
-        "summary": "Search recipes by title",
+        "summary": "Search recipes",
         "tags": [
           "Receipes"
         ],
-        "description": "search recipes by title",
+        "description": "search recipes by key word",
         "security": [
           {
             "bearerAuth": []
@@ -780,26 +780,17 @@
               "type": "string",
               "example": "pot"
             },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "schema": {
+              "type": "string",
+              "example": "title"
+            },
             "required": true,
-            "description": "search query"
-          },
-          {
-            "in": "query",
-            "name": "page",
-            "schema": {
-              "type": "number",
-              "example": 2
-            },
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "perPage",
-            "schema": {
-              "type": "number",
-              "example": 2
-            },
-            "required": false
+            "description": "one of the next values - 'title' OR 'ingredients'"
           }
         ],
         "responses": {
@@ -810,18 +801,6 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "total": {
-                      "type": "number",
-                      "example": 9
-                    },
-                    "page": {
-                      "type": "number",
-                      "example": 2
-                    },
-                    "perPage": {
-                      "type": "number",
-                      "example": 6
-                    },
                     "searchResult": {
                       "type": "array",
                       "items": {
@@ -841,11 +820,11 @@
     },
     "/api/ingredients/": {
       "get": {
-        "summary": "Search recipes by ingredient",
+        "summary": "Search recipes",
         "tags": [
           "Receipes"
         ],
-        "description": "search recipes by ingredient",
+        "description": "search recipes by key word",
         "security": [
           {
             "bearerAuth": []
@@ -860,24 +839,6 @@
               "example": "Basil Leaves"
             },
             "required": true
-          },
-          {
-            "in": "query",
-            "name": "page",
-            "schema": {
-              "type": "number",
-              "example": 2
-            },
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "perPage",
-            "schema": {
-              "type": "number",
-              "example": 2
-            },
-            "required": false
           }
         ],
         "responses": {
@@ -888,18 +849,6 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "total": {
-                      "type": "number",
-                      "example": 9
-                    },
-                    "page": {
-                      "type": "number",
-                      "example": 2
-                    },
-                    "perPage": {
-                      "type": "number",
-                      "example": 6
-                    },
                     "searchResult": {
                       "type": "array",
                       "items": {
