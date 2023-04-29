@@ -2,6 +2,11 @@ const { Ingredients } = require('../../db/ingredientsModel');
 const { Recipes } = require('../../db/recipesModel');
 
 const ingredientsSearch = async (query, paginationData) => {
+  if (!query) {
+    const search = await Ingredients.find();
+    return search;
+  }
+
   const { skip, limit } = paginationData;
 
   const searchedIngredient = await Ingredients.findOne({
