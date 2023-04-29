@@ -6,7 +6,6 @@ const { catchAsyncWrapper } = require('../../utils');
 
 const getOwnRecipesById = catchAsyncWrapper(async (req, res) => {
   const { recipeId } = req.params;
-  console.log(recipeId);
 
   const result = await ownRecipes.getOwnRecipesById(recipeId);
   res.status(200).json({
