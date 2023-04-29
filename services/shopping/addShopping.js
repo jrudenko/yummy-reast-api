@@ -2,8 +2,6 @@ const { Shopping } = require('../../db/shoppingModel');
 const { Ingredients } = require('../../db/ingredientsModel');
 
 const addShopping = async (owner, shoppingItem) => {
-  // const id = uuid();
-
   const { iid, number } = shoppingItem;
 
   const isIdInIngredients = await Ingredients.findById(iid);

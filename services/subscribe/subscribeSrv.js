@@ -1,6 +1,5 @@
 const { User } = require('../../db/usersModel');
 
-// TODO: subscribe validation,
 const subscribeUser = async (id, emailToSubscribe) => {
   const updateResult = await User.findByIdAndUpdate(
     id,
@@ -19,5 +18,3 @@ const subscribeUser = async (id, emailToSubscribe) => {
 };
 
 module.exports = { subscribeUser };
-
-// TODO ? JWT token expired time

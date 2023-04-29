@@ -4,7 +4,6 @@ const { recipes } = require('../../services');
 const { catchAsyncWrapper } = require('../../utils');
 
 const getMainPageController = catchAsyncWrapper(async (req, res) => {
-  //   const result = await Recipes.find({}).limit(4);
   const result = await recipes.getMainPage();
 
   res.json({

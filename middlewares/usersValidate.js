@@ -19,7 +19,6 @@ const userSubscribeSchema = Joi.object().keys({
 const createUserValidate = (req, res, next) => {
   const { error, value } = userCreateSchema.validate(req.body);
   if (error) {
-    // return new CustomError(400, error.message );
     return res.status(400).json({ error: error.message });
   }
 
@@ -29,7 +28,6 @@ const createUserValidate = (req, res, next) => {
 const loginUserValidate = (req, res, next) => {
   const { error, value } = userLoginSchema.validate(req.body);
   if (error) {
-    // return new CustomError(400, error.message );
     return res.status(400).json({ error: error.message });
   }
 

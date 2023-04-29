@@ -8,7 +8,6 @@ const ingredientsListController = catchAsyncWrapper(async (req, res) => {
     searchResult,
   });
 });
-// TODO: refactor both in one
 const ingredientsSearchController = catchAsyncWrapper(async (req, res) => {
   const { query, page = 1, perPage = 6 } = req.query;
 

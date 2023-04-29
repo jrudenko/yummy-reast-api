@@ -20,7 +20,6 @@ const subscribeUserController = catchAsyncWrapper(async (req, res) => {
   const subscribedEmail = subscribedResult.subscribe;
 
   await subscribeUser.sendSubscribeMail(subscribedEmail);
-  // TODO: add sending email check after confirm SendGrid credentials
 
   res.status(200).json({
     subscribed: subscribedEmail,

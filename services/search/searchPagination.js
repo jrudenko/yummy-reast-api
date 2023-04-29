@@ -1,19 +1,12 @@
 const { Recipes } = require('../../db/recipesModel');
 const { Ingredients } = require('../../db/ingredientsModel');
 
-const searchPagination = async (
-  // userId = null,
-  query,
-  page,
-  perPage,
-  ingredients
-) => {
+const searchPagination = async (query, page, perPage, ingredients) => {
   let total = 0;
 
   if (ingredients) {
     const searchedIngredient = await Ingredients.findOne({
       $text: { $search: query },
-      // ttl: query
     }).select('_id: 1');
 
     if (!searchedIngredient) return [];
