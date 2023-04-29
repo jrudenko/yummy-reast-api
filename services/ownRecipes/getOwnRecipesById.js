@@ -1,7 +1,7 @@
 const { Recipes } = require('../../db/recipesModel');
 
-const getOwnRecipesById = async userId => {
-  const recipes = await Recipes.findById(userId);
+const getOwnRecipesById = async recipeId => {
+  const recipes = await Recipes.findById(recipeId);
   return recipes;
 };
 

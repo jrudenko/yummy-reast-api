@@ -8,7 +8,7 @@ router.delete('/:recipesId', auth, ctrl.removeController);
 
 router.get('/', auth, ctrl.getOwnRecipes);
 
-router.get('/:userId', auth, ctrl.getOwnRecipesById);
+router.get('/:recipeId', auth, ctrl.getOwnRecipesById);
 
 router.post('/', auth, upload.single('preview'), ctrl.addController);
 
