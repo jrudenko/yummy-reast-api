@@ -23,6 +23,7 @@ const ingredientsSearch = async (query, paginationData) => {
         id: ingredientId,
       },
     },
+    owner: { $exists: false },
   })
     .skip(skip)
     .limit(limit);
