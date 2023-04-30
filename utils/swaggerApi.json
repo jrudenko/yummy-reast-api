@@ -1066,7 +1066,7 @@
                       "newRecipe": {
                         "title": "soup",
                         "category": "Beef",
-                        "instructios": "instr example",
+                        "instructions": "instr example",
                         "description": "descr example",
                         "preview": "https://res.cloudinary.com/djwzlsgzd/image/upload/v1682770054/recipes/ftiwhswj4aqjl2e1rewc.png",
                         "time": 24,
@@ -1132,7 +1132,7 @@
                         "_id": "6440f6d31e3250e37a110af9",
                         "title": "soup",
                         "category": "Beef",
-                        "instructios": "instr example",
+                        "instructions": "instr example",
                         "description": "descr example",
                         "preview": "https://res.cloudinary.com/djwzlsgzd/image/upload/v1682852791/recipes/s7xidq5ywg3qvj0lscg4.png",
                         "time": 24,
@@ -1611,7 +1611,7 @@
               }
             }
           },
-          "instructios": {
+          "instructions": {
             "type": "string",
             "example": "instr example"
           },
