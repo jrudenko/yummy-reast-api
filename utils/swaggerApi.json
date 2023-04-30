@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "test API",
-    "version": "v1"
+    "version": "v0.9"
   },
   "tags": [
     {
@@ -17,7 +17,7 @@
         "tags": [
           "Auth"
         ],
-        "description": "description",
+        "description": "name, email & password required. email must bu unique in User collection",
         "requestBody": {
           "required": true,
           "content": {
@@ -80,7 +80,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "name already used"
+                      "example": "email already used"
                     }
                   }
                 }
@@ -96,7 +96,7 @@
         "tags": [
           "Auth"
         ],
-        "description": "description",
+        "description": "email & password is required",
         "requestBody": {
           "required": true,
           "content": {
@@ -194,7 +194,7 @@
     },
     "/api/auth/current": {
       "get": {
-        "summary": "Get info of loginned user",
+        "summary": "Get info of loginned user by token",
         "tags": [
           "Auth"
         ],
@@ -266,7 +266,7 @@
         "tags": [
           "Auth"
         ],
-        "description": "Update name OR email fields os user record",
+        "description": "Update name and/or avatar",
         "security": [
           {
             "bearerAuth": []
@@ -339,7 +339,7 @@
     },
     "/api/auth/logout": {
       "post": {
-        "summary": "Update existed user",
+        "summary": "Logout user",
         "tags": [
           "Auth"
         ],
@@ -362,7 +362,7 @@
         "tags": [
           "Subscribe"
         ],
-        "description": "description",
+        "description": "send email with messahe, that user is sunscribed. There nopossibility to send message on the same email twice one-by-one",
         "security": [
           {
             "bearerAuth": []
@@ -415,7 +415,7 @@
         "tags": [
           "Avatar"
         ],
-        "description": "description",
+        "description": "apload avatar only",
         "security": [
           {
             "bearerAuth": []
@@ -444,17 +444,17 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "subscribed": {
+                    "status": {
                       "type": "string",
-                      "example": "email@email.com"
+                      "example": "success"
                     },
-                    "OR": {
-                      "type": "string",
-                      "example": ":"
+                    "code": {
+                      "type": "number",
+                      "example": 201
                     },
-                    "message": {
+                    "avatar": {
                       "type": "string",
-                      "example": "already done"
+                      "example": "https://res.cloudinary.com/djwzlsgzd/image/upload/v1682854051/avatars/owith0t7gnincwx8hwmc.jpg"
                     }
                   }
                 }
@@ -470,7 +470,7 @@
         "tags": [
           "Receipes"
         ],
-        "description": "received an array of strings",
+        "description": "received an fixed array of strings - categories",
         "security": [
           {
             "bearerAuth": []
@@ -572,7 +572,7 @@
         "tags": [
           "Receipes"
         ],
-        "description": "received an 4 receipes data for 4 categories",
+        "description": "received an 8 receipes data for given in querry category",
         "security": [
           {
             "bearerAuth": []
@@ -583,7 +583,7 @@
             "name": "category",
             "in": "path",
             "required": true,
-            "description": "user id",
+            "description": "recipes category",
             "schema": {
               "type": "string",
               "example": "Chicken"
@@ -646,11 +646,11 @@
     },
     "/api/recipes/id/{id}": {
       "get": {
-        "summary": "Get a list of recipes",
+        "summary": "Get recipe by id",
         "tags": [
           "Receipes"
         ],
-        "description": "received an 4 receipes data for 4 categories",
+        "description": "receive a receipe by id",
         "security": [
           {
             "bearerAuth": []
@@ -661,7 +661,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "user id",
+            "description": "recipe id",
             "schema": {
               "type": "string",
               "example": "640cd5ac2d9fecf12e8897f0"
@@ -724,11 +724,11 @@
     },
     "/api/recipes/popular-recipe": {
       "get": {
-        "summary": "Get a list of recipes categories",
+        "summary": "Get popular recipes",
         "tags": [
           "Receipes"
         ],
-        "description": "received an array of strings",
+        "description": "Get a list popular recipes",
         "security": [
           {
             "bearerAuth": []
@@ -736,7 +736,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Array of Strings - reccipes",
+            "description": "popular recipes",
             "content": {
               "application/json": {
                 "schema": {
@@ -766,7 +766,7 @@
         "tags": [
           "Receipes"
         ],
-        "description": "search recipes by title",
+        "description": "search recipes by title with pagination. If no pagination data given - return 1st page with 6 recipes. If page in query setted more than a real pages count according to all items - return last awailable page.",
         "security": [
           {
             "bearerAuth": []
@@ -953,11 +953,11 @@
     },
     "/api/ownRecipes": {
       "get": {
-        "summary": "Get a list of own recipes",
+        "summary": "Get own recipes",
         "tags": [
           "Own Receipes"
         ],
-        "description": "received an array of strings",
+        "description": "received own recipes",
         "security": [
           {
             "bearerAuth": []
@@ -1020,7 +1020,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "d not found"
+                      "example": "data not found"
                     }
                   }
                 }
@@ -1036,7 +1036,7 @@
         "tags": [
           "Own Receipes"
         ],
-        "description": "add own recipe to personal collection",
+        "description": "add own recipe to personal collection.",
         "security": [
           {
             "bearerAuth": []
@@ -1095,11 +1095,11 @@
     },
     "/api/ownRecipes/{id}": {
       "get": {
-        "summary": "Delete own recipe",
+        "summary": "Take own recipe by id",
         "tags": [
           "Own Receipes"
         ],
-        "description": "delete own recipe",
+        "description": "get own recipe by id",
         "security": [
           {
             "bearerAuth": []
@@ -1110,7 +1110,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "user id",
+            "description": "own recipe id",
             "schema": {
               "type": "string",
               "example": "640cd5ac2d9fecf12e8897f0"
@@ -1119,7 +1119,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Own reccipes",
+            "description": "Get own recipe by id",
             "content": {
               "application/json": {
                 "schema": {
@@ -1127,11 +1127,15 @@
                   "example": {
                     "status": "success",
                     "code": 200,
-                    "message": "contact delete",
                     "data": {
-                      "result": {
+                      "recipes": {
                         "_id": "6440f6d31e3250e37a110af9",
-                        "thumb": "https://res.cloudinary.com/djwzlsgzd/image/upload/v1681979091/recipes/ftxurqsca0fajtvbzrjp.jpg",
+                        "title": "soup",
+                        "category": "Beef",
+                        "instructios": "instr example",
+                        "description": "descr example",
+                        "preview": "https://res.cloudinary.com/djwzlsgzd/image/upload/v1682852791/recipes/s7xidq5ywg3qvj0lscg4.png",
+                        "time": 24,
                         "tags": [],
                         "ingredients": [],
                         "owner": "643ac8bba08cae793c3b2eed",
@@ -1167,7 +1171,7 @@
         "tags": [
           "Own Receipes"
         ],
-        "description": "delete own recipe",
+        "description": "delete own recipe by id",
         "security": [
           {
             "bearerAuth": []
@@ -1310,7 +1314,7 @@
         },
         "responses": {
           "201": {
-            "description": "Array of recipes when search result is no empty",
+            "description": "Array of recipes id when search result is no empty",
             "content": {
               "application/json": {
                 "schema": {
@@ -1483,11 +1487,11 @@
         }
       },
       "patch": {
-        "summary": "Delete ingredient",
+        "summary": "Delete ingredient from shopping list",
         "tags": [
           "Shopping list"
         ],
-        "description": "Delete ingredient from shopping list",
+        "description": "Delete ingredient from shopping list by id",
         "security": [
           {
             "bearerAuth": []

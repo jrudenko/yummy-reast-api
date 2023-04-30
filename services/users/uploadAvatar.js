@@ -7,6 +7,8 @@ const path = require('path');
 const cloudinary = require('cloudinary').v2;
 const { User } = require('../../db/usersModel');
 
+const unlink = util.promisify(fs.unlink);
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -28,7 +30,7 @@ const uploadAvatar = async (file, _id) => {
   });
   const avatar = uploadedAvatar.secure_url;
 
-  await fs.unlink(filePath);
+  await unlink(filePath);
 
   const updatedUser = await User.findByIdAndUpdate(
     _id,
