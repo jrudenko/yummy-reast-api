@@ -762,11 +762,11 @@
     },
     "/api/search": {
       "get": {
-        "summary": "Search recipes",
+        "summary": "Search recipes by title",
         "tags": [
           "Receipes"
         ],
-        "description": "search recipes by key word",
+        "description": "search recipes by title",
         "security": [
           {
             "bearerAuth": []
@@ -780,17 +780,26 @@
               "type": "string",
               "example": "pot"
             },
-            "required": true
+            "required": true,
+            "description": "search query"
           },
           {
             "in": "query",
-            "name": "type",
+            "name": "page",
             "schema": {
-              "type": "string",
-              "example": "title"
+              "type": "number",
+              "example": 2
             },
-            "required": true,
-            "description": "one of the next values - 'title' OR 'ingredients'"
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "perPage",
+            "schema": {
+              "type": "number",
+              "example": 2
+            },
+            "required": false
           }
         ],
         "responses": {
@@ -801,6 +810,18 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "total": {
+                      "type": "number",
+                      "example": 9
+                    },
+                    "page": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "perPage": {
+                      "type": "number",
+                      "example": 6
+                    },
                     "searchResult": {
                       "type": "array",
                       "items": {
@@ -820,11 +841,11 @@
     },
     "/api/ingredients/": {
       "get": {
-        "summary": "Search recipes",
+        "summary": "Search recipes by ingredient",
         "tags": [
           "Receipes"
         ],
-        "description": "search recipes by key word",
+        "description": "search recipes by ingredient",
         "security": [
           {
             "bearerAuth": []
@@ -839,6 +860,24 @@
               "example": "Basil Leaves"
             },
             "required": true
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "number",
+              "example": 2
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "perPage",
+            "schema": {
+              "type": "number",
+              "example": 2
+            },
+            "required": false
           }
         ],
         "responses": {
@@ -849,6 +888,18 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "total": {
+                      "type": "number",
+                      "example": 9
+                    },
+                    "page": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "perPage": {
+                      "type": "number",
+                      "example": 6
+                    },
                     "searchResult": {
                       "type": "array",
                       "items": {
@@ -1012,6 +1063,72 @@
                     "code": 200,
                     "message": "contact delete",
                     "data": {
+                      "newRecipe": {
+                        "title": "soup",
+                        "category": "Beef",
+                        "instructios": "instr example",
+                        "description": "descr example",
+                        "preview": "https://res.cloudinary.com/djwzlsgzd/image/upload/v1682770054/recipes/ftiwhswj4aqjl2e1rewc.png",
+                        "time": 24,
+                        "tags": [],
+                        "ingredients": {
+                          "id": "640c2dd963a319ea671e3672",
+                          "measure": "4 tbs",
+                          "thumb": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564215/mj1ottbkds56ug62ptkz.png",
+                          "title": "Black Pepper",
+                          "desc": "Black pepper is native to present-day Kerala in Southwestern India, and is extensively cultivated there and elsewhere in tropical regions. Vietnam is the world's largest producer and exporter of pepper, producing 34% of the world's crop, as of 2013"
+                        },
+                        "thumb": "https://res.cloudinary.com/djwzlsgzd/image/upload/v1681979091/recipes/ftxurqsca0fajtvbzrjp.jpg",
+                        "owner": "643ac8bba08cae793c3b2eed",
+                        "_id": "6440f6d31e3250e37a110af9",
+                        "createdAt": "2023-04-20T08:24:51.731Z",
+                        "updatedAt": "2023-04-20T08:24:51.731Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ownRecipes/{id}": {
+      "get": {
+        "summary": "Delete own recipe",
+        "tags": [
+          "Own Receipes"
+        ],
+        "description": "delete own recipe",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "user id",
+            "schema": {
+              "type": "string",
+              "example": "640cd5ac2d9fecf12e8897f0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Own reccipes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": "success",
+                    "code": 200,
+                    "message": "contact delete",
+                    "data": {
                       "result": {
                         "_id": "6440f6d31e3250e37a110af9",
                         "thumb": "https://res.cloudinary.com/djwzlsgzd/image/upload/v1681979091/recipes/ftxurqsca0fajtvbzrjp.jpg",
@@ -1026,11 +1143,25 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "when wrong id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "d not found"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
-      }
-    },
-    "/api/ownRecipes/{id}": {
+      },
       "delete": {
         "summary": "Delete own recipe",
         "tags": [
@@ -1436,10 +1567,6 @@
             "type": "string",
             "example": "soup"
           },
-          "instructios": {
-            "type": "string",
-            "example": "instr example"
-          },
           "category": {
             "type": "string",
             "example": "Beef"
@@ -1448,10 +1575,6 @@
             "type": "string",
             "example": "descr example"
           },
-          "thumb": {
-            "type": "string",
-            "example": "thumb example"
-          },
           "time": {
             "type": "string",
             "example": 24
@@ -1459,17 +1582,36 @@
           "ingredients": {
             "type": "array",
             "items": {
-              "type": "string"
-            },
-            "example": [
-              "640cd5ac2d9fecf12e889821"
-            ]
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "640c2dd963a319ea671e3672"
+                },
+                "measure": {
+                  "type": "string",
+                  "example": "4 tbs"
+                },
+                "thumb": {
+                  "type": "string",
+                  "example": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564215/mj1ottbkds56ug62ptkz.png"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Black Pepper"
+                },
+                "desc": {
+                  "type": "string",
+                  "example": "Black pepper is native to present-day Kerala in Southwestern India, and is extensively cultivated there and elsewhere in tropical regions. Vietnam is the world's largest producer and exporter of pepper, producing 34% of the world's crop, as of 2013"
+                }
+              }
+            }
           },
-          "owner": {
+          "instructios": {
             "type": "string",
-            "example": "643dab0682ade3006f67ecae"
+            "example": "instr example"
           },
-          "file": {
+          "preview": {
             "type": "string",
             "format": "binary"
           }
