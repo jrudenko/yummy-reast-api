@@ -10,7 +10,8 @@ Have a seat at our table! On So Yummy you can tag your favorites, so finding you
 
 ### The swagger api docs 
 is at the ht<span>tp://<span>localhost:YOU SERVER RUNNING PORT/api-docs/ path, if you run this app locally.
-ir there are, [on our server](https://yummy-rest-api.yurgo.fun/api-docs/)
+
+or there are, [on our server](https://yummy-rest-api.yurgo.fun/api-docs/)
 
 ### All private environments
 that needed for this app described in .env.example
