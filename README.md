@@ -9,7 +9,7 @@ Have a seat at our table! On So Yummy you can tag your favorites, so finding you
 [frontend of which is there](https://github.com/jrudenko/project-team-4-react-node.js)
 
 ### The swagger api docs 
-is at the ht<span>tp://<span>localhost:<span><</span>YOU SERVER RUNNING PORT<span>></span>/api-docs/ path, if you run this app locally.
+is at the ht<span>tp://<span>localhost:YOU SERVER RUNNING PORT/api-docs/ path, if you run this app locally.
 
 ### All private environments
 that needed for this app described in .env.example
