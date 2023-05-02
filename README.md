@@ -6,7 +6,7 @@
 Have a seat at our table! On So Yummy you can tag your favorites, so finding your go-to meals is a snap! From award-winning recipes to quick and fun party pleasers, So Yummy delivers appetizing recipes for expert and beginner chefs alike.
 
 ### This repo is the backend part of project,
-[frontend of which is there:](https://github.com/jrudenko/project-team-4-react-node.js)
+[frontend of which is there](https://github.com/jrudenko/project-team-4-react-node.js)
 
 ### The swagger api docs 
 is at the http://localhost:<YOU SERVER RUNNING PORT>/api-docs/ path, if you run this app locally.
